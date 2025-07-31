@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tacos Los AZ | Sabor y Tradición</title>
+  <title>Tacos Los AZ | Menú Interactivo</title>
   <meta name="description" content="Disfruta los mejores tacos de barbacoa, bistec y adobada en Tacos Los AZ. Aguas frescas, refrescos y servicio de calidad." />
   <meta name="keywords" content="tacos, barbacoa, bistec, adobada, aguas frescas, tacos los az, comida mexicana" />
   <meta name="author" content="Tacos Los AZ" />
@@ -19,7 +19,10 @@
       background: #fff8f0;
       color: #3a1f0b;
       line-height: 1.6;
-      padding-bottom: 100px; /* para botón flotante */
+      padding-bottom: 120px; /* para botones flotantes */
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
     }
     a {
       color: #b33a00;
@@ -34,6 +37,8 @@
       padding: 20px 10px;
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+      border-radius: 8px;
     }
     header h1 {
       font-size: 2.5rem;
@@ -48,9 +53,7 @@
       font-size: 1.1rem;
     }
     section {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 0 15px;
+      margin-bottom: 40px;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.7s ease forwards;
@@ -73,25 +76,64 @@
       padding-bottom: 5px;
     }
     /* Menú */
-    .menu-list {
+    ul.menu-list {
       list-style: none;
       padding-left: 0;
     }
-    .menu-list li {
+    ul.menu-list li {
       background: #f3e6d9;
-      margin: 8px 0;
+      margin: 10px 0;
       padding: 12px 20px;
       border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 1px 1px 3px rgba(179,58,0,0.3);
       display: flex;
       justify-content: space-between;
       font-weight: 600;
-      box-shadow: 1px 1px 3px rgba(179,58,0,0.3);
       transition: background-color 0.3s ease;
+      user-select: none;
     }
-    .menu-list li:hover {
+    ul.menu-list li:hover {
       background: #b33a00;
       color: white;
-      cursor: default;
+    }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      position: relative;
+      animation: fadeInUp 0.3s ease forwards;
+    }
+    .modal-content img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      user-select: none;
+    }
+    .close-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #b33a00;
+      cursor: pointer;
+      user-select: none;
     }
     /* Opiniones */
     .testimonial {
@@ -150,6 +192,28 @@
     #whatsapp-float:hover {
       background-color: #1ebe57;
     }
+    /* Botón flotante Instagram */
+    #instagram-float {
+      position: fixed;
+      bottom: 95px; /* 60 + 10 + 25 para que no se superponga */
+      right: 25px;
+      background: #e1306c;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 26px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+    #instagram-float:hover {
+      background-color: #b02755;
+    }
     /* Animaciones */
     @keyframes fadeInUp {
       to {
@@ -166,11 +230,11 @@
         margin: 0 8px;
         font-size: 1rem;
       }
-      .menu-list li {
+      ul.menu-list li {
         flex-direction: column;
         align-items: flex-start;
       }
-      .menu-list li span {
+      ul.menu-list li span {
         margin-top: 6px;
         font-weight: 700;
       }
@@ -198,21 +262,48 @@
   <section id="menu">
     <h2>Menú y Precios</h2>
     <ul class="menu-list">
-      <li>Taco de Barbacoa <span>$19</span></li>
-      <li>Taco de Bistec <span>$22</span></li>
-      <li>Taco de Adobada <span>$22</span></li>
+      <li data-name="Barbacoa" data-price="19" data-weight="50" data-img="https://i.imgur.com/kwXUmvh.jpg">
+        Taco de Barbacoa <span>$19</span>
+      </li>
+      <li data-name="Bistec" data-price="24" data-weight="50" data-img="https://i.imgur.com/7KUFXkJ.jpg">
+        Taco de Bistec <span>$24</span>
+      </li>
+      <li data-name="Adobada" data-price="22" data-weight="50" data-img="https://i.imgur.com/D67pHGi.jpg">
+        Taco de Adobada <span>$22</span>
+      </li>
+    </ul>
+
+    <h3>Lonches</h3>
+    <ul class="menu-list">
+      <li data-name="Lonche de Bistec" data-price="60" data-weight="150" data-img="https://i.imgur.com/9y2QVtF.jpg">
+        Lonche de Bistec <span>$60</span>
+      </li>
+      <li data-name="Lonche de Barbacoa" data-price="70" data-weight="150" data-img="https://i.imgur.com/Ar3b0qW.jpg">
+        Lonche de Barbacoa <span>$70</span>
+      </li>
+      <li data-name="Lonche de Adobada" data-price="70" data-weight="150" data-img="https://i.imgur.com/6HLPkKu.jpg">
+        Lonche de Adobada <span>$70</span>
+      </li>
     </ul>
 
     <h3>Aguas Frescas</h3>
     <ul class="menu-list">
-      <li>Agua fresca chica (medio litro) <span>$25</span></li>
-      <li>Agua fresca grande (1 litro) <span>$30</span></li>
+      <li data-name="Agua fresca chica (medio litro)" data-price="25" data-weight="" data-img="https://i.imgur.com/7Wyx9Qa.jpg">
+        Agua fresca chica (medio litro) <span>$25</span>
+      </li>
+      <li data-name="Agua fresca grande (1 litro)" data-price="30" data-weight="" data-img="https://i.imgur.com/4wkdsyU.jpg">
+        Agua fresca grande (1 litro) <span>$30</span>
+      </li>
     </ul>
 
     <h3>Refrescos</h3>
     <ul class="menu-list">
-      <li>Refresco 355 ml <span>$18</span></li>
-      <li>Refresco 500 ml <span>$25</span></li>
+      <li data-name="Refresco 355 ml" data-price="18" data-weight="" data-img="https://i.imgur.com/w9F3YIo.jpg">
+        Refresco 355 ml <span>$18</span>
+      </li>
+      <li data-name="Refresco 500 ml" data-price="25" data-weight="" data-img="https://i.imgur.com/yzxC5Ac.jpg">
+        Refresco 500 ml <span>$25</span>
+      </li>
     </ul>
   </section>
 
@@ -237,15 +328,33 @@
     <p class="contact-info">Teléfono: <a href="tel:+523311450168">33 1145 0168</a></p>
     <p class="contact-info">Dirección: Calle Falsa 123, Guadalajara, Jalisco</p>
     <div class="social-icons">
-      <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-square"></i></a>
     </div>
   </section>
 
+  <!-- Modal -->
+  <div class="modal" id="menuModal">
+    <div class="modal-content">
+      <span class="close-btn" id="modalClose">&times;</span>
+      <h3 id="modalName"></h3>
+      <img id="modalImg" src="" alt="Imagen" />
+      <p><strong>Precio:</strong> $<span id="modalPrice"></span></p>
+      <p id="weightPara"><strong>Peso estimado:</strong> <span id="modalWeight"></span> gramos</p>
+    </div>
+  </div>
+
   <!-- Botón flotante WhatsApp -->
-  <a href="https://wa.me/523311450168?text=Hola%20quiero%20hacer%20un%20pedido" id="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
-    <i class="fab fa-whatsapp"></i>
+  <a href="https://wa.me/523311450168?text=Hola%20quiero%20hacer%20un%20pedido" id="whatsapp-float" target="_blank" aria-label="Chat WhatsApp" title="WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
   </a>
 
-</body>
-</html>
+  <!-- Botón flotante Instagram -->
+  <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" id="instagram-float" target="_blank" aria-label="Instagram" title="Instagram">
+    <i class="fab fa-instagram" aria-hidden="true"></i>
+  </a>
+
+  <script>
+    const modal = document.getElementById('menuModal');
+    const modalName = document.getElementById('modalName');
+    const modalImg = document.get
