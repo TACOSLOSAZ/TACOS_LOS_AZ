@@ -7,6 +7,10 @@
   <meta name="description" content="Disfruta los mejores tacos de barbacoa, bistec y adobada en Tacos Los AZ. Aguas frescas, refrescos y servicio de calidad." />
   <meta name="keywords" content="tacos, barbacoa, bistec, adobada, aguas frescas, tacos los az, comida mexicana" />
   <meta name="author" content="Tacos Los AZ" />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
   <style>
     /* Reset y básicos */
     * {
@@ -344,7 +348,6 @@
       }
     }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -437,8 +440,12 @@
       Nos ponemos todos los sábados y domingos de 8 am a 2 pm
     </p>
     <div class="social-icons">
-      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook" title="Facebook">
+        <i class="fab fa-facebook-square"></i>
+      </a>
     </div>
   </section>
 
@@ -466,12 +473,12 @@
         <input type="tel" id="telefono" name="telefono" required placeholder="Tu número de teléfono" pattern="[0-9\s\-\+\(\)]{7,}" />
         
         <label for="descripcion">Descripción del evento:</label>
-        <textarea id="descripcion" name="descripcion" required placeholder="Cuéntanos qué deseas para tu evento"></textarea>
+        <textarea id="descripcion" name="descripcion" required placeholder="Detalles del evento"></textarea>
+
+        <label for="numeroPersonas">Número de personas:</label>
+        <input type="number" id="numeroPersonas" name="numeroPersonas" min="1" required placeholder="Cantidad aproximada" />
         
-        <label for="personas">Número de personas:</label>
-        <input type="number" id="personas" name="personas" required min="1" placeholder="¿Para cuántas personas?" />
-        
-        <button type="submit" class="submit-btn">Enviar por WhatsApp</button>
+        <button type="submit" class="submit-btn">Enviar cotización</button>
       </form>
     </div>
   </div>
@@ -487,20 +494,20 @@
   </a>
 
   <!-- Botón flotante Cotiza tu evento -->
-  <button id="cotiza-evento-float" aria-label="Cotiza tu evento">
-    <i class="fas fa-calendar-alt"></i> Cotiza tu evento
+  <button id="cotiza-evento-float" aria-label="Cotiza tu evento" title="Cotiza tu evento">
+    <i class="fa-regular fa-calendar"></i> Cotiza tu evento
   </button>
 
   <script>
-    // Mostrar modal menú con info al hacer click en un producto
-    const menuItems = document.querySelectorAll('.menu-list li');
+    // Variables globales
+    const menuItems = document.querySelectorAll('ul.menu-list li');
     const modal = document.getElementById('menuModal');
     const modalName = document.getElementById('modalName');
     const modalImg = document.getElementById('modalImg');
     const modalPrice = document.getElementById('modalPrice');
     const modalWeight = document.getElementById('modalWeight');
     const weightPara = document.getElementById('weightPara');
-    const modalClose = document.getElementById('modalClose');
+    const modalCloseBtn = document.getElementById('modalClose');
 
     menuItems.forEach(item => {
       item.addEventListener('click', () => {
@@ -511,73 +518,53 @@
 
         modalName.textContent = name;
         modalPrice.textContent = price;
-        modalImg.src = img;
-        modalImg.alt = name;
-        if(weight) {
+        if(weight){
           modalWeight.textContent = weight;
           weightPara.style.display = 'block';
         } else {
           weightPara.style.display = 'none';
         }
+        modalImg.src = img;
+        modalImg.alt = `Imagen de ${name}`;
+
         modal.style.display = 'flex';
       });
     });
 
-    modalClose.addEventListener('click', () => {
+    modalCloseBtn.addEventListener('click', () => {
       modal.style.display = 'none';
     });
 
     window.addEventListener('click', (e) => {
-      if(e.target === modal) {
+      if(e.target === modal){
         modal.style.display = 'none';
       }
-      if(e.target === cotizaModal) {
+      if(e.target === cotizaModal){
         cotizaModal.style.display = 'none';
       }
     });
 
-    // Modal cotiza evento
+    // Cotiza tu evento modal
     const cotizaBtn = document.getElementById('cotiza-evento-float');
     const cotizaModal = document.getElementById('cotizaModal');
-    const cotizaClose = document.getElementById('cotizaClose');
+    const cotizaCloseBtn = document.getElementById('cotizaClose');
     const cotizaForm = document.getElementById('cotizaForm');
 
     cotizaBtn.addEventListener('click', () => {
       cotizaModal.style.display = 'flex';
     });
 
-    cotizaClose.addEventListener('click', () => {
+    cotizaCloseBtn.addEventListener('click', () => {
       cotizaModal.style.display = 'none';
     });
 
     cotizaForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const nombre = document.getElementById('nombre').value.trim();
-      const telefono = document.getElementById('telefono').value.trim();
-      const descripcion = document.getElementById('descripcion').value.trim();
-      const personas = document.getElementById('personas').value.trim();
-
-      if(!nombre || !telefono || !descripcion || !personas) {
-        alert('Por favor completa todos los campos.');
-        return;
-      }
-
-      // Formato mensaje WhatsApp
-      const mensaje = `Hola, quiero cotizar un evento:%0A` +
-                      `Nombre: ${nombre}%0A` +
-                      `Teléfono: ${telefono}%0A` +
-                      `Descripción: ${descripcion}%0A` +
-                      `Número de personas: ${personas}`;
-
-      // Abrir WhatsApp con mensaje prellenado
-      const url = `https://wa.me/523311450168?text=${mensaje}`;
-      window.open(url, '_blank');
-
-      // Cerrar modal y limpiar formulario
-      cotizaModal.style.display = 'none';
+      alert('Gracias por enviar tu solicitud de cotización. Nos pondremos en contacto contigo pronto.');
       cotizaForm.reset();
+      cotizaModal.style.display = 'none';
     });
   </script>
-
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
