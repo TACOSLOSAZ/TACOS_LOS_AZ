@@ -7,6 +7,11 @@
   <meta name="description" content="Disfruta los mejores tacos de barbacoa, bistec y adobada en Tacos Los AZ. Aguas frescas, refrescos y servicio de calidad." />
   <meta name="keywords" content="tacos, barbacoa, bistec, adobada, aguas frescas, tacos los az, comida mexicana" />
   <meta name="author" content="Tacos Los AZ" />
+  <!-- FontAwesome CDN para íconos -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
   <style>
     /* Reset y básicos */
     * {
@@ -86,6 +91,7 @@
     section:nth-of-type(1) { animation-delay: 0.15s; }
     section:nth-of-type(2) { animation-delay: 0.4s; }
     section:nth-of-type(3) { animation-delay: 0.65s; }
+    section:nth-of-type(4) { animation-delay: 0.85s; }
     section h2 {
       margin-bottom: 18px;
       border-bottom: 3px solid #a0522d;
@@ -190,6 +196,7 @@
       color: #5a3e1b;
       position: relative;
       line-height: 1.4;
+      word-wrap: break-word;
     }
     .testimonial::before {
       content: '“';
@@ -210,6 +217,57 @@
       font-weight: 900;
       font-size: 1rem;
       text-shadow: 1px 1px 1px #7a4f22;
+    }
+    /* Formulario de opiniones */
+    #comentarios-form {
+      background: #f9f3e8;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 2px 3px 10px rgba(160,82,45,0.2);
+      max-width: 600px;
+      margin-top: 25px;
+    }
+    #comentarios-form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+      color: #5a3e1b;
+    }
+    #comentarios-form input[type="text"],
+    #comentarios-form textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.7px solid #a0522d;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+    #comentarios-form input[type="text"]:focus,
+    #comentarios-form textarea:focus {
+      outline: none;
+      border-color: #f8c200;
+      box-shadow: 0 0 6px #f8c200aa;
+    }
+    #comentarios-form textarea {
+      min-height: 80px;
+      margin-bottom: 14px;
+    }
+    #comentarios-form button {
+      background-color: #a0522d;
+      color: #fff7f0;
+      border: none;
+      padding: 12px 22px;
+      font-size: 1.1rem;
+      font-weight: 900;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    #comentarios-form button:hover {
+      background-color: #7a3618;
+      transform: scale(1.05);
     }
     /* Contacto */
     .contact-info {
@@ -419,21 +477,19 @@
         width: 45px;
         height: 45px;
         font-size: 22px;
-        bottom: 80px;
+        bottom: 85px;
         right: 20px;
       }
     }
   </style>
-  <!-- FontAwesome kit -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
-
   <header>
-    <h1>TACOS LOS AZ</h1>
-    <p class="subtitulo">Tacos y lonches de bistec, adobada y barbacoa directo del corazón de Guadalajara</p>
+    <h1>Tacos</h1>
+    <h1>Los AZ</h1>
+    <p class="subtitulo">“Los mejores tacos de barbacoa, bistec y adobada”</p>
     <nav>
-      <a href="#menu">Menú</a>
+      <a href="#menu">Menú y Precios</a>
       <a href="#opiniones">Opiniones</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -441,185 +497,147 @@
 
   <section id="menu">
     <h2>Menú y Precios</h2>
-
-    <h3>TACOS</h3>
+    <p class="horarios">Horario: Lunes a Domingo 9:00 AM - 8:00 PM</p>
     <ul class="menu-list">
-      <li data-name="Barbacoa" data-price="19" data-weight="50" data-img="https://i.imgur.com/kwXUmvh.jpg">
-        Taco de Barbacoa <span>$19</span>
+      <li data-img="https://images.unsplash.com/photo-1576798501579-29ecfef71a8e?auto=format&fit=crop&w=500&q=80" data-desc="Deliciosos tacos de barbacoa preparados al estilo tradicional, suaves y jugosos.">
+        Tacos de Barbacoa <span>$19</span>
       </li>
-      <li data-name="Bistec" data-price="24" data-weight="50" data-img="https://i.imgur.com/7KUFXkJ.jpg">
-        Taco de Bistec <span>$24</span>
+      <li data-img="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=80" data-desc="Tacos de bistec jugosos y bien sazonados, preparados al momento.">
+        Tacos de Bistec <span>$22</span>
       </li>
-      <li data-name="Adobada" data-price="22" data-weight="50" data-img="https://i.imgur.com/D67pHGi.jpg">
-        Taco de Adobada <span>$22</span>
+      <li data-img="https://images.unsplash.com/photo-1617191516251-0fda968bc982?auto=format&fit=crop&w=500&q=80" data-desc="Tacos de adobada con el sabor típico y picosito que te encantará.">
+        Tacos de Adobada <span>$22</span>
+      </li>
+      <li data-img="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=500&q=80" data-desc="Lonche de bistec en pan suave, con queso y salsa especial.">
+        Lonche de Bistec <span>$80</span>
       </li>
     </ul>
-
-    <h3>Lonches</h3>
+    <h3>Bebidas</h3>
     <ul class="menu-list">
-      <li data-name="Lonche de Bistec" data-price="60" data-weight="150" data-img="https://i.imgur.com/9y2QVtF.jpg">
-        Lonche de Bistec <span>$60</span>
+      <li>
+        Agua fresca chica (0.5 L) <span>$25</span>
       </li>
-      <li data-name="Lonche de Barbacoa" data-price="70" data-weight="150" data-img="https://i.imgur.com/Ar3b0qW.jpg">
-        Lonche de Barbacoa <span>$70</span>
+      <li>
+        Agua fresca grande (1 L) <span>$30</span>
       </li>
-      <li data-name="Lonche de Adobada" data-price="70" data-weight="150" data-img="https://i.imgur.com/6HLPkKu.jpg">
-        Lonche de Adobada <span>$70</span>
-      </li>
-    </ul>
-
-    <h3>Aguas Frescas</h3>
-    <ul class="menu-list">
-      <li data-name="Agua fresca chica (medio litro)" data-price="25" data-weight="" data-img="https://i.imgur.com/7Wyx9Qa.jpg">
-        Agua fresca chica (medio litro) <span>$25</span>
-      </li>
-      <li data-name="Agua fresca grande (1 litro)" data-price="30" data-weight="" data-img="https://i.imgur.com/4wkdsyU.jpg">
-        Agua fresca grande (1 litro) <span>$30</span>
-      </li>
-    </ul>
-
-    <h3>Refrescos</h3>
-    <ul class="menu-list">
-      <li data-name="Refresco 355 ml" data-price="18" data-weight="" data-img="https://i.imgur.com/w9F3YIo.jpg">
+      <li>
         Refresco 355 ml <span>$18</span>
       </li>
-      <li data-name="Refresco 500 ml" data-price="25" data-weight="" data-img="https://i.imgur.com/6ql3uoc.jpg">
+      <li>
         Refresco 500 ml <span>$25</span>
       </li>
     </ul>
   </section>
 
+  <!-- Modal para detalles -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal-content">
+      <span class="close-btn" role="button" aria-label="Cerrar modal">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <img src="" alt="" id="modalImg" />
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+
   <section id="opiniones">
-    <h2>Opiniones de Nuestros Clientes</h2>
-    <div class="testimonial">Me encantan los tacos de barbacoa, siempre frescos y sabrosos. ¡Recomendados al 100%! <strong>- Juan P.</strong></div>
-    <div class="testimonial">El lonche de bistec es delicioso, el mejor que he probado en Guadalajara. <strong>- María G.</strong></div>
-    <div class="testimonial">Muy buen servicio y ambiente. Los precios son justos y la calidad excelente. <strong>- Carlos M.</strong></div>
+    <h2>Opiniones de los Clientes</h2>
+    <div id="comentarios-list">
+      <div class="testimonial"><p>¡Los mejores tacos que he probado en la ciudad!</p><strong>- Ana M.</strong></div>
+      <div class="testimonial"><p>Excelente sabor y atención. Recomendados al 100%.</p><strong>- Luis R.</strong></div>
+    </div>
+
+    <form id="comentarios-form" aria-label="Formulario para dejar comentarios">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
+      <label for="comentario">Comentario:</label>
+      <textarea id="comentario" name="comentario" required placeholder="Escribe tu opinión"></textarea>
+      <button type="submit">Enviar comentario</button>
+    </form>
   </section>
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <p class="contact-info"><strong>Oscar Lomelí:</strong> 3311450168</p>
-    <p class="contact-info"><strong>Luis Araiza:</strong> 3312567890</p>
-    <p class="contact-info"><strong>Enrique Sánchez:</strong> 3319876543</p>
-
-    <p class="horarios">Horario: Lunes a Domingo de 9:00 am a 10:00 pm</p>
-
+    <p class="contact-info">Oscar Lomelí - Tel: 3311450168</p>
+    <p class="contact-info">Luis Araiza - Tel: 3312345678</p>
+    <p class="contact-info">Enrique Sánchez - Tel: 3319876543</p>
     <div class="social-icons">
-      <a href="https://wa.me/5213311450168" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/5213311450168" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
     </div>
   </section>
 
   <!-- Botones flotantes -->
-  <a id="whatsapp-float" href="https://wa.me/5213311450168" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-  <a id="instagram-float" href="https://www.instagram.com/tacos_los_azmx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-  <button id="cotiza-evento-float" aria-label="Cotiza tu evento"><i class="fas fa-calendar-alt"></i> Cotiza tu evento</button>
+  <a href="https://wa.me/5213311450168" target="_blank" id="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" id="instagram-float" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
 
-  <!-- Modal para detalle del menú -->
-  <div id="modal-menu" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
-    <div class="modal-content">
-      <span class="close-btn" id="modal-close" tabindex="0" role="button" aria-label="Cerrar">&times;</span>
-      <h3 id="modal-title"></h3>
-      <img id="modal-img" src="" alt="Imagen del platillo" />
-      <p id="modal-desc"></p>
-      <p><strong>Precio:</strong> $<span id="modal-price"></span></p>
-      <p><strong>Peso aproximado:</strong> <span id="modal-weight"></span> gramos</p>
-    </div>
-  </div>
-
-  <!-- Modal formulario cotización -->
-  <div id="modal-cotiza" class="modal" role="dialog" aria-modal="true" aria-labelledby="cotiza-title" aria-describedby="cotiza-desc">
-    <div class="modal-content">
-      <span class="close-btn" id="cotiza-close" tabindex="0" role="button" aria-label="Cerrar">&times;</span>
-      <h3 id="cotiza-title">Cotiza tu evento</h3>
-      <form id="cotiza-form">
-        <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" name="nombre" required />
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10,15}" placeholder="Solo números" required />
-        <label for="detalles">Detalles del evento:</label>
-        <textarea id="detalles" name="detalles" required></textarea>
-        <label for="numero-personas">Número aproximado de personas:</label>
-        <input type="number" id="numero-personas" name="numero-personas" min="1" required />
-        <button type="submit" class="submit-btn">Enviar cotización</button>
-      </form>
-    </div>
-  </div>
+  <button id="cotiza-evento-float" aria-label="Cotiza tu evento">
+    <i class="fa-regular fa-calendar"></i> Cotiza tu evento
+  </button>
 
   <script>
-    // Abrir modal del menú con info
-    const menuItems = document.querySelectorAll('.menu-list li');
-    const modalMenu = document.getElementById('modal-menu');
-    const modalTitle = document.getElementById('modal-title');
-    const modalImg = document.getElementById('modal-img');
-    const modalDesc = document.getElementById('modal-desc');
-    const modalPrice = document.getElementById('modal-price');
-    const modalWeight = document.getElementById('modal-weight');
-    const modalClose = document.getElementById('modal-close');
+    // Abrir modal al dar click en plato del menú
+    const menuItems = document.querySelectorAll('.menu-list li[data-img]');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeBtn = document.querySelector('.close-btn');
 
     menuItems.forEach(item => {
       item.addEventListener('click', () => {
-        const name = item.getAttribute('data-name');
-        const price = item.getAttribute('data-price');
-        const weight = item.getAttribute('data-weight');
-        const img = item.getAttribute('data-img');
-
-        modalTitle.textContent = name;
-        modalImg.src = img;
-        modalImg.alt = `Imagen de ${name}`;
-        modalPrice.textContent = price;
-        modalWeight.textContent = weight ? weight : "N/A";
-        modalDesc.textContent = `Disfruta de nuestro delicioso ${name.toLowerCase()}. ¡Calidad y sabor garantizados!`;
-
-        modalMenu.style.display = 'flex';
-        modalClose.focus();
+        modalTitle.textContent = item.textContent.trim().split('$')[0].trim();
+        modalImg.src = item.dataset.img;
+        modalImg.alt = modalTitle.textContent;
+        modalDesc.textContent = item.dataset.desc;
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
       });
     });
-
-    modalClose.addEventListener('click', () => {
-      modalMenu.style.display = 'none';
+    closeBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
     });
-    modalClose.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        modalMenu.style.display = 'none';
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
       }
     });
 
-    window.addEventListener('click', e => {
-      if (e.target === modalMenu) {
-        modalMenu.style.display = 'none';
-      }
-      if (e.target === modalCotiza) {
-        modalCotiza.style.display = 'none';
-      }
-    });
+    // Formulario de comentarios (Opiniones)
+    const form = document.getElementById('comentarios-form');
+    const comentariosList = document.getElementById('comentarios-list');
 
-    // Modal cotiza evento
-    const cotizaBtn = document.getElementById('cotiza-evento-float');
-    const modalCotiza = document.getElementById('modal-cotiza');
-    const cotizaClose = document.getElementById('cotiza-close');
-    const cotizaForm = document.getElementById('cotiza-form');
-
-    cotizaBtn.addEventListener('click', () => {
-      modalCotiza.style.display = 'flex';
-      document.getElementById('nombre').focus();
-    });
-    cotizaClose.addEventListener('click', () => {
-      modalCotiza.style.display = 'none';
-    });
-    cotizaClose.addEventListener('keydown', e => {
-      if(e.key === 'Enter' || e.key === ' ') {
-        modalCotiza.style.display = 'none';
-      }
-    });
-
-    cotizaForm.addEventListener('submit', e => {
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      alert('Gracias por enviar tu cotización, te contactaremos pronto.');
-      cotizaForm.reset();
-      modalCotiza.style.display = 'none';
+      const nombre = form.nombre.value.trim();
+      const comentario = form.comentario.value.trim();
+      if (nombre && comentario) {
+        // Crear nuevo comentario
+        const div = document.createElement('div');
+        div.className = 'testimonial';
+        div.innerHTML = `<p>${comentario}</p><strong>- ${nombre}</strong>`;
+        comentariosList.appendChild(div);
+        form.reset();
+        alert('¡Gracias por tu comentario!');
+      } else {
+        alert('Por favor, completa ambos campos.');
+      }
+    });
+
+    // Botón cotiza evento (ejemplo: abre contacto)
+    const cotizaBtn = document.getElementById('cotiza-evento-float');
+    cotizaBtn.addEventListener('click', () => {
+      document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
     });
   </script>
-
 </body>
 </html>
