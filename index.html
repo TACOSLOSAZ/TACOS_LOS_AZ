@@ -13,91 +13,87 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
     }
     body {
-      background-color: #F5F1E9; /* beige claro */
-      background-image: repeating-linear-gradient(
-        45deg,
-        #F5F1E9,
-        #F5F1E9 10px,
-        #E6DFC9 11px,
-        #F5F1E9 12px
-      );
-      color: #3a1f0b;
+      background: #f5efe6 url('https://www.transparenttextures.com/patterns/linen.png') repeat;
+      color: #5a3e1b;
       line-height: 1.6;
-      padding-bottom: 120px; /* para botones flotantes */
+      padding-bottom: 130px;
       max-width: 900px;
-      margin: auto;
-      padding: 20px;
+      margin: 20px auto;
       position: relative;
+      font-size: 16px;
     }
     a {
-      color: #6B4C2B; /* marrón oscuro */
+      color: #a0512a;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
     a:hover {
-      color: #C97433; /* naranja quemado */
+      color: #7a3618;
       text-decoration: underline;
     }
     header {
-      background: #6B4C2B; /* marrón oscuro */
-      color: white;
-      padding: 20px 10px;
+      background: #a0522d;
+      color: #fff7f0;
+      padding: 20px 15px;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      margin-bottom: 30px;
-      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(160,82,45,0.5);
+      margin-bottom: 35px;
+      border-radius: 12px;
       position: relative;
     }
     header h1 {
-      font-size: 2.5rem;
-      letter-spacing: 2px;
+      font-size: 3rem;
+      letter-spacing: 3px;
       margin-bottom: 5px;
-      color: #FFF8E7; /* beige muy claro */
+      font-weight: 900;
+      text-shadow: 1px 1px 2px #4a2e0b;
     }
     header p.subtitulo {
       font-style: italic;
       font-weight: 600;
-      color: #D7C9AA; /* beige medio */
-      font-size: 1.2rem;
-      margin-top: 0;
+      font-size: 1.3rem;
+      color: #f4e7d3;
+      text-shadow: 1px 1px 1px #7a4f22;
+      margin-bottom: 15px;
     }
     nav {
       margin-top: 10px;
     }
     nav a {
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #F5E6B2; /* beige claro */
+      margin: 0 18px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #f4e7d3;
+      text-shadow: 1px 1px 2px #7a4f22;
+      cursor: pointer;
     }
     nav a:hover {
-      color: #C97433; /* naranja quemado */
-      text-decoration: underline;
+      color: #ffbb7b;
+      text-shadow: 1px 1px 3px #502b06;
     }
     section {
-      margin-bottom: 40px;
+      margin-bottom: 50px;
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.7s ease forwards;
     }
-    section:nth-of-type(1) {
-      animation-delay: 0.1s;
-    }
-    section:nth-of-type(2) {
-      animation-delay: 0.3s;
-    }
-    section:nth-of-type(3) {
-      animation-delay: 0.5s;
-    }
-    section:nth-of-type(4) {
-      animation-delay: 0.7s;
-    }
-    h2 {
-      margin-bottom: 15px;
-      border-bottom: 2px solid #6B4C2B; /* marrón oscuro */
-      padding-bottom: 5px;
+    section:nth-of-type(1) { animation-delay: 0.15s; }
+    section:nth-of-type(2) { animation-delay: 0.4s; }
+    section:nth-of-type(3) { animation-delay: 0.65s; }
+    section h2 {
+      margin-bottom: 18px;
+      border-bottom: 3px solid #a0522d;
+      padding-bottom: 6px;
+      font-size: 2rem;
+      letter-spacing: 1.5px;
+      font-weight: 800;
+      text-shadow: 1px 1px 1px #7a4f22;
     }
     /* Menú */
     ul.menu-list {
@@ -105,177 +101,208 @@
       padding-left: 0;
     }
     ul.menu-list li {
-      background: #EDE6D9; /* beige muy claro */
-      margin: 10px 0;
-      padding: 12px 20px;
-      border-radius: 8px;
+      background: #f9f3e8;
+      margin: 12px 0;
+      padding: 14px 25px;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 1px 1px 3px rgba(107, 76, 43, 0.3);
+      box-shadow: 2px 3px 7px rgba(160,82,45,0.3);
       display: flex;
       justify-content: space-between;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #5a3e1b;
+      transition: background-color 0.35s ease, transform 0.3s ease;
       user-select: none;
-      color: #5D3A1A; /* marrón oscuro */
     }
     ul.menu-list li:hover {
-      background: #C97433; /* naranja quemado */
-      color: white;
+      background: #a0522d;
+      color: #fff7f0;
+      transform: scale(1.05);
+      box-shadow: 2px 6px 12px rgba(160,82,45,0.6);
     }
-    /* Modal styles */
+    ul.menu-list li span {
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: inherit;
+    }
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
-      z-index: 10000;
+      z-index: 11000;
       left: 0; top: 0;
       width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.6);
+      background-color: rgba(0,0,0,0.75);
       justify-content: center;
       align-items: center;
-      padding: 10px;
+      padding: 20px;
+      animation: fadeIn 0.3s ease forwards;
     }
     .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
+      background: #f9f3e8;
+      padding: 25px 30px;
+      border-radius: 15px;
       width: 100%;
-      max-width: 420px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      max-width: 450px;
+      box-shadow: 0 0 20px rgba(160,82,45,0.7);
       position: relative;
-      animation: fadeInUp 0.3s ease forwards;
-      overflow-y: auto;
-      max-height: 90vh;
+      text-align: center;
+      animation: slideIn 0.3s ease forwards;
     }
     .modal-content img {
       max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
       user-select: none;
+      box-shadow: 0 4px 8px rgba(160,82,45,0.3);
     }
     .close-btn {
       position: absolute;
-      right: 10px;
-      top: 10px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #6B4C2B;
+      right: 14px;
+      top: 14px;
+      font-size: 28px;
+      font-weight: 900;
+      color: #a0522d;
       cursor: pointer;
       user-select: none;
+      transition: color 0.25s ease;
+    }
+    .close-btn:hover {
+      color: #7a3618;
+    }
+    .modal p {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #5a3e1b;
+      margin-top: 12px;
     }
     /* Opiniones */
     .testimonial {
-      background: #f7f2ec;
-      border-left: 5px solid #6B4C2B;
-      padding: 15px 20px;
-      margin-bottom: 15px;
-      border-radius: 5px;
+      background: #f4e7d3;
+      border-left: 6px solid #a0522d;
+      padding: 18px 25px;
+      margin-bottom: 20px;
+      border-radius: 8px;
       font-style: italic;
-      box-shadow: 1px 1px 5px rgba(107,76,43,0.15);
-      color: #5D3A1A;
+      box-shadow: 3px 3px 9px rgba(160,82,45,0.15);
+      font-size: 1.1rem;
+      color: #5a3e1b;
+      position: relative;
+      line-height: 1.4;
+    }
+    .testimonial::before {
+      content: '“';
+      font-size: 3rem;
+      position: absolute;
+      top: 8px;
+      left: 15px;
+      color: #a0522d;
+      font-weight: 900;
+      font-family: serif;
     }
     .testimonial strong {
       font-style: normal;
-      color: #6B4C2B;
+      color: #a0522d;
       display: block;
-      margin-top: 8px;
+      margin-top: 15px;
       text-align: right;
-      font-weight: 700;
+      font-weight: 900;
+      font-size: 1rem;
+      text-shadow: 1px 1px 1px #7a4f22;
     }
     /* Contacto */
     .contact-info {
-      font-size: 1.1rem;
-      color: #5D3A1A;
+      font-size: 1.15rem;
+      color: #5a3e1b;
+      margin-bottom: 8px;
     }
     .horarios {
       margin-top: 10px;
       font-style: italic;
-      font-weight: 600;
-      color: #6B4C2B;
+      font-weight: 700;
+      color: #a0522d;
+      font-size: 1.1rem;
+      text-shadow: 1px 1px 0 #f9f3e8;
     }
     .social-icons {
       margin-top: 15px;
     }
     .social-icons a {
-      margin-right: 15px;
-      font-size: 1.5rem;
-      color: #6B4C2B;
-      transition: color 0.3s ease;
+      margin-right: 20px;
+      font-size: 2.2rem;
+      color: #a0522d;
+      transition: color 0.3s ease, transform 0.3s ease;
+      vertical-align: middle;
+      display: inline-block;
     }
     .social-icons a:hover {
-      color: #C97433;
+      color: #7a3618;
+      transform: scale(1.2);
     }
-    /* Botón flotante WhatsApp */
-    #whatsapp-float {
+    /* Botones flotantes */
+    #whatsapp-float, #instagram-float {
       position: fixed;
-      bottom: 25px;
       right: 25px;
-      background-color: #25d366; /* verde WhatsApp */
+      border-radius: 50%;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.25);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: white;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      z-index: 12000;
+    }
+    #whatsapp-float {
+      bottom: 25px;
       width: 60px;
       height: 60px;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.3s ease;
+      background-color: #25d366;
+      font-size: 32px;
     }
     #whatsapp-float:hover {
-      background-color: #1ebe57;
+      box-shadow: 0 0 20px #25d366;
+      transform: scale(1.1);
     }
-    /* Botón flotante Instagram */
     #instagram-float {
-      position: fixed;
-      bottom: 95px; /* 60 + 10 + 25 */
-      right: 25px;
-      background: #6B4C2B; /* marrón oscuro */
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 26px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.3s ease;
+      bottom: 95px;
+      width: 55px;
+      height: 55px;
+      background: #e1306c;
+      font-size: 28px;
     }
     #instagram-float:hover {
-      background-color: #C97433;
+      box-shadow: 0 0 20px #e1306c;
+      transform: scale(1.1);
     }
-    /* Botón flotante Cotiza tu evento arriba derecha */
+    /* Botón cotiza evento flotante */
     #cotiza-evento-float {
       position: fixed;
       top: 25px;
       right: 25px;
-      background-color: #AA7A35; /* marrón dorado */
-      color: #3a1f0b;
-      font-weight: 700;
+      background-color: #f8c200;
+      color: #5a3e1b;
+      font-weight: 800;
       border-radius: 30px;
-      padding: 12px 20px;
-      font-size: 1rem;
+      padding: 14px 22px;
+      font-size: 1.05rem;
       cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 14px rgba(248,194,0,0.7);
       display: flex;
       align-items: center;
-      gap: 8px;
-      z-index: 11000;
-      transition: background-color 0.3s ease;
+      gap: 10px;
+      z-index: 13000;
+      transition: background-color 0.3s ease, transform 0.3s ease;
       user-select: none;
     }
-    #cotiza-evento-float:hover {
-      background-color: #8B6328;
-    }
-    /* Icono calendario */
     #cotiza-evento-float i {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+    }
+    #cotiza-evento-float:hover {
+      background-color: #dbaf00;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(219,175,0,0.9);
     }
     /* Formulario modal */
     form {
@@ -284,40 +311,50 @@
     form label {
       display: block;
       margin-top: 15px;
-      font-weight: 600;
-      color: #3a1f0b;
+      font-weight: 700;
+      color: #5a3e1b;
     }
     form input[type="text"],
     form input[type="tel"],
     form textarea,
     form input[type="number"] {
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1.5px solid #6B4C2B;
-      border-radius: 6px;
+      padding: 9px 12px;
+      margin-top: 7px;
+      border: 1.7px solid #a0522d;
+      border-radius: 8px;
       font-size: 1rem;
       resize: vertical;
-      font-family: Arial, sans-serif;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+    form input[type="text"]:focus,
+    form input[type="tel"]:focus,
+    form textarea:focus,
+    form input[type="number"]:focus {
+      outline: none;
+      border-color: #f8c200;
+      box-shadow: 0 0 6px #f8c200aa;
     }
     form textarea {
-      min-height: 80px;
+      min-height: 90px;
     }
     form button.submit-btn {
-      margin-top: 20px;
-      background-color: #6B4C2B;
-      color: white;
+      margin-top: 22px;
+      background-color: #a0522d;
+      color: #fff7f0;
       border: none;
-      padding: 12px 20px;
-      font-size: 1.1rem;
-      font-weight: 700;
+      padding: 14px 22px;
+      font-size: 1.15rem;
+      font-weight: 900;
       border-radius: 30px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
       width: 100%;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
     form button.submit-btn:hover {
-      background-color: #513A1A;
+      background-color: #7a3618;
+      transform: scale(1.05);
     }
     /* Animaciones */
     @keyframes fadeInUp {
@@ -326,13 +363,27 @@
         transform: translateY(0);
       }
     }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    @keyframes slideIn {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
     /* Responsive */
     @media (max-width: 600px) {
       header h1 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
       }
       nav a {
-        margin: 0 8px;
+        margin: 0 10px;
         font-size: 1rem;
       }
       ul.menu-list li {
@@ -340,24 +391,41 @@
         align-items: flex-start;
       }
       ul.menu-list li span {
-        margin-top: 6px;
-        font-weight: 700;
+        margin-top: 8px;
+        font-weight: 900;
+        font-size: 1.1rem;
       }
       .contact-info {
         font-size: 1rem;
       }
       .social-icons a {
-        font-size: 1.3rem;
+        font-size: 1.8rem;
+        margin-right: 14px;
       }
       #cotiza-evento-float {
         top: 15px;
         right: 15px;
-        padding: 10px 16px;
-        font-size: 0.9rem;
+        padding: 10px 18px;
+        font-size: 0.95rem;
+      }
+      #whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
+        bottom: 20px;
+        right: 20px;
+      }
+      #instagram-float {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+        bottom: 80px;
+        right: 20px;
       }
     }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- FontAwesome kit -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
 
@@ -415,7 +483,7 @@
       <li data-name="Refresco 355 ml" data-price="18" data-weight="" data-img="https://i.imgur.com/w9F3YIo.jpg">
         Refresco 355 ml <span>$18</span>
       </li>
-      <li data-name="Refresco 500 ml" data-price="25" data-weight="" data-img="https://i.imgur.com/yzxC5Ac.jpg">
+      <li data-name="Refresco 500 ml" data-price="25" data-weight="" data-img="https://i.imgur.com/6ql3uoc.jpg">
         Refresco 500 ml <span>$25</span>
       </li>
     </ul>
@@ -423,106 +491,133 @@
 
   <section id="opiniones">
     <h2>Opiniones de Nuestros Clientes</h2>
-    <div class="testimonial">
-      "Los mejores tacos de barbacoa que he probado en Guadalajara. Siempre frescos y buen servicio."
-      <strong>- María G.</strong>
-    </div>
-    <div class="testimonial">
-      "El sabor es auténtico y el precio justo. ¡Recomendados para toda la familia!"
-      <strong>- Juan P.</strong>
-    </div>
-    <div class="testimonial">
-      "Me encanta la variedad y las aguas frescas están deliciosas."
-      <strong>- Ana R.</strong>
-    </div>
+    <div class="testimonial">Me encantan los tacos de barbacoa, siempre frescos y sabrosos. ¡Recomendados al 100%! <strong>- Juan P.</strong></div>
+    <div class="testimonial">El lonche de bistec es delicioso, el mejor que he probado en Guadalajara. <strong>- María G.</strong></div>
+    <div class="testimonial">Muy buen servicio y ambiente. Los precios son justos y la calidad excelente. <strong>- Carlos M.</strong></div>
   </section>
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <p class="contact-info">Teléfono: <a href="tel:+523311450168">33 1145 0168</a></p>
-    <p class="contact-info">
-      Dirección:
-      <a href="https://www.google.com/maps/search/?api=1&query=Morelos+48,+Jardines+de+San+Francisco,+44799+Guadalajara,+Jal." target="_blank" rel="noopener noreferrer">
-        Morelos 48, Jardines de San Francisco, 44799 Guadalajara, Jal.
-      </a>
-    </p>
-    <p class="horarios">
-      Nos ponemos todos los sábados y domingos de 8 am a 2 pm
-    </p>
+    <p class="contact-info"><strong>Oscar Lomelí:</strong> 3311450168</p>
+    <p class="contact-info"><strong>Luis Araiza:</strong> 3312567890</p>
+    <p class="contact-info"><strong>Enrique Sánchez:</strong> 3319876543</p>
+
+    <p class="horarios">Horario: Lunes a Domingo de 9:00 am a 10:00 pm</p>
+
     <div class="social-icons">
-      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook" title="Facebook">
-        <i class="fab fa-facebook-square"></i>
-      </a>
+      <a href="https://wa.me/5213311450168" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
   </section>
 
-  <!-- Modal menú -->
-  <div class="modal" id="menuModal">
+  <!-- Botones flotantes -->
+  <a id="whatsapp-float" href="https://wa.me/5213311450168" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a id="instagram-float" href="https://www.instagram.com/tacos_los_azmx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  <button id="cotiza-evento-float" aria-label="Cotiza tu evento"><i class="fas fa-calendar-alt"></i> Cotiza tu evento</button>
+
+  <!-- Modal para detalle del menú -->
+  <div id="modal-menu" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
     <div class="modal-content">
-      <span class="close-btn" id="modalClose">&times;</span>
-      <h3 id="modalName"></h3>
-      <img id="modalImg" src="" alt="Imagen" />
-      <p><strong>Precio:</strong> $<span id="modalPrice"></span></p>
-      <p id="weightPara"><strong>Peso estimado:</strong> <span id="modalWeight"></span> gramos</p>
+      <span class="close-btn" id="modal-close" tabindex="0" role="button" aria-label="Cerrar">&times;</span>
+      <h3 id="modal-title"></h3>
+      <img id="modal-img" src="" alt="Imagen del platillo" />
+      <p id="modal-desc"></p>
+      <p><strong>Precio:</strong> $<span id="modal-price"></span></p>
+      <p><strong>Peso aproximado:</strong> <span id="modal-weight"></span> gramos</p>
     </div>
   </div>
 
-  <!-- Botones flotantes -->
-  <a href="https://wa.me/523311450168" target="_blank" id="whatsapp-float" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" id="instagram-float" aria-label="Instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="#contacto" id="cotiza-evento-float" aria-label="Cotiza tu evento">
-    <i class="fas fa-calendar-alt"></i> Cotiza tu evento
-  </a>
+  <!-- Modal formulario cotización -->
+  <div id="modal-cotiza" class="modal" role="dialog" aria-modal="true" aria-labelledby="cotiza-title" aria-describedby="cotiza-desc">
+    <div class="modal-content">
+      <span class="close-btn" id="cotiza-close" tabindex="0" role="button" aria-label="Cerrar">&times;</span>
+      <h3 id="cotiza-title">Cotiza tu evento</h3>
+      <form id="cotiza-form">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required />
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10,15}" placeholder="Solo números" required />
+        <label for="detalles">Detalles del evento:</label>
+        <textarea id="detalles" name="detalles" required></textarea>
+        <label for="numero-personas">Número aproximado de personas:</label>
+        <input type="number" id="numero-personas" name="numero-personas" min="1" required />
+        <button type="submit" class="submit-btn">Enviar cotización</button>
+      </form>
+    </div>
+  </div>
 
   <script>
-    // Modal funcionamiento
-    const menuItems = document.querySelectorAll("ul.menu-list li");
-    const modal = document.getElementById("menuModal");
-    const modalClose = document.getElementById("modalClose");
-    const modalName = document.getElementById("modalName");
-    const modalImg = document.getElementById("modalImg");
-    const modalPrice = document.getElementById("modalPrice");
-    const modalWeight = document.getElementById("modalWeight");
-    const weightPara = document.getElementById("weightPara");
+    // Abrir modal del menú con info
+    const menuItems = document.querySelectorAll('.menu-list li');
+    const modalMenu = document.getElementById('modal-menu');
+    const modalTitle = document.getElementById('modal-title');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalPrice = document.getElementById('modal-price');
+    const modalWeight = document.getElementById('modal-weight');
+    const modalClose = document.getElementById('modal-close');
 
     menuItems.forEach(item => {
-      item.addEventListener("click", () => {
-        const name = item.getAttribute("data-name");
-        const price = item.getAttribute("data-price");
-        const weight = item.getAttribute("data-weight");
-        const img = item.getAttribute("data-img");
+      item.addEventListener('click', () => {
+        const name = item.getAttribute('data-name');
+        const price = item.getAttribute('data-price');
+        const weight = item.getAttribute('data-weight');
+        const img = item.getAttribute('data-img');
 
-        modalName.textContent = name;
-        modalPrice.textContent = price;
-        if(weight) {
-          modalWeight.textContent = weight;
-          weightPara.style.display = "block";
-        } else {
-          weightPara.style.display = "none";
-        }
+        modalTitle.textContent = name;
         modalImg.src = img;
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden"; // Evita scroll al modal abierto
+        modalImg.alt = `Imagen de ${name}`;
+        modalPrice.textContent = price;
+        modalWeight.textContent = weight ? weight : "N/A";
+        modalDesc.textContent = `Disfruta de nuestro delicioso ${name.toLowerCase()}. ¡Calidad y sabor garantizados!`;
+
+        modalMenu.style.display = 'flex';
+        modalClose.focus();
       });
     });
 
-    modalClose.addEventListener("click", () => {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
+    modalClose.addEventListener('click', () => {
+      modalMenu.style.display = 'none';
+    });
+    modalClose.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        modalMenu.style.display = 'none';
+      }
     });
 
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-        document.body.style.overflow = "auto";
+    window.addEventListener('click', e => {
+      if (e.target === modalMenu) {
+        modalMenu.style.display = 'none';
       }
+      if (e.target === modalCotiza) {
+        modalCotiza.style.display = 'none';
+      }
+    });
+
+    // Modal cotiza evento
+    const cotizaBtn = document.getElementById('cotiza-evento-float');
+    const modalCotiza = document.getElementById('modal-cotiza');
+    const cotizaClose = document.getElementById('cotiza-close');
+    const cotizaForm = document.getElementById('cotiza-form');
+
+    cotizaBtn.addEventListener('click', () => {
+      modalCotiza.style.display = 'flex';
+      document.getElementById('nombre').focus();
+    });
+    cotizaClose.addEventListener('click', () => {
+      modalCotiza.style.display = 'none';
+    });
+    cotizaClose.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        modalCotiza.style.display = 'none';
+      }
+    });
+
+    cotizaForm.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Gracias por enviar tu cotización, te contactaremos pronto.');
+      cotizaForm.reset();
+      modalCotiza.style.display = 'none';
     });
   </script>
 
