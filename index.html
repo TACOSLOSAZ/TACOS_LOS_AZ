@@ -2,582 +2,202 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tacos Los AZ | Menú Interactivo</title>
-  <meta name="description" content="Disfruta los mejores tacos de barbacoa, bistec y adobada en Tacos Los AZ. Aguas frescas, refrescos y servicio de calidad." />
-  <meta name="keywords" content="tacos, barbacoa, bistec, adobada, aguas frescas, tacos los az, comida mexicana" />
-  <meta name="author" content="Tacos Los AZ" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TACOS LOS AZ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* Reset y básicos */
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-    }
-    body {
-      background: #fff8f0;
-      color: #3a1f0b;
-      line-height: 1.6;
-      padding-bottom: 120px; /* para botones flotantes */
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-      position: relative;
-    }
-    a {
-      color: #b33a00;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
     }
     header {
-      background: #b33a00;
-      color: white;
-      padding: 20px 10px;
+      background-color: #fff;
       text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      margin-bottom: 30px;
-      border-radius: 8px;
+      padding: 20px;
       position: relative;
     }
     header h1 {
-      font-size: 2.5rem;
-      letter-spacing: 2px;
-      margin-bottom: 5px;
+      color: black;
+      font-size: 3rem;
+      font-family: 'Arial Rounded MT Bold', sans-serif;
     }
-    header p.subtitulo {
-      font-style: italic;
-      font-weight: 600;
-      color: #fff1e6;
+    header p {
       font-size: 1.2rem;
-      margin-top: 0;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: white;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      margin-bottom: 40px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.7s ease forwards;
-    }
-    section:nth-of-type(1) {
-      animation-delay: 0.1s;
-    }
-    section:nth-of-type(2) {
-      animation-delay: 0.3s;
-    }
-    section:nth-of-type(3) {
-      animation-delay: 0.5s;
-    }
-    section:nth-of-type(4) {
-      animation-delay: 0.7s;
-    }
-    h2 {
-      margin-bottom: 15px;
-      border-bottom: 2px solid #b33a00;
-      padding-bottom: 5px;
-    }
-    /* Menú */
-    ul.menu-list {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul.menu-list li {
-      background: #f3e6d9;
-      margin: 10px 0;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 1px 1px 3px rgba(179,58,0,0.3);
-      display: flex;
-      justify-content: space-between;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    ul.menu-list li:hover {
-      background: #b33a00;
-      color: white;
-    }
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 10000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-    }
-    .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 420px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-      position: relative;
-      animation: fadeInUp 0.3s ease forwards;
-      overflow-y: auto;
-      max-height: 90vh;
-    }
-    .modal-content img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      user-select: none;
-    }
-    .close-btn {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #b33a00;
-      cursor: pointer;
-      user-select: none;
-    }
-    /* Opiniones */
-    .testimonial {
-      background: #f7f2ec;
-      border-left: 5px solid #b33a00;
-      padding: 15px 20px;
-      margin-bottom: 15px;
-      border-radius: 5px;
       font-style: italic;
-      box-shadow: 1px 1px 5px rgba(179,58,0,0.15);
-    }
-    .testimonial strong {
-      font-style: normal;
-      color: #b33a00;
-      display: block;
-      margin-top: 8px;
-      text-align: right;
-      font-weight: 700;
-    }
-    /* Contacto */
-    .contact-info {
-      font-size: 1.1rem;
-    }
-    .horarios {
-      margin-top: 10px;
-      font-style: italic;
-      font-weight: 600;
-      color: #b33a00;
-    }
-    .social-icons {
-      margin-top: 15px;
-    }
-    .social-icons a {
-      margin-right: 15px;
-      font-size: 1.5rem;
-      color: #b33a00;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: #7a1d00;
-    }
-    /* Botón flotante WhatsApp */
-    #whatsapp-float {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background-color: #25d366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.3s ease;
-    }
-    #whatsapp-float:hover {
-      background-color: #1ebe57;
-    }
-    /* Botón flotante Instagram */
-    #instagram-float {
-      position: fixed;
-      bottom: 95px; /* 60 + 10 + 25 para que no se superponga */
-      right: 25px;
-      background: #e1306c;
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      font-size: 26px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      z-index: 1000;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background-color 0.3s ease;
-    }
-    #instagram-float:hover {
-      background-color: #b02755;
-    }
-    /* Botón flotante Cotiza tu evento arriba derecha */
-    #cotiza-evento-float {
-      position: fixed;
-      top: 25px;
-      right: 25px;
-      background-color: #f8c200;
-      color: #3a1f0b;
-      font-weight: 700;
-      border-radius: 30px;
-      padding: 12px 20px;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 11000;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    #cotiza-evento-float:hover {
-      background-color: #d1a800;
-    }
-    /* Icono calendario */
-    #cotiza-evento-float i {
-      font-size: 1.3rem;
-    }
-    /* Formulario modal */
-    form {
-      text-align: left;
-    }
-    form label {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-      color: #3a1f0b;
-    }
-    form input[type="text"],
-    form input[type="tel"],
-    form textarea,
-    form input[type="number"] {
-      width: 100%;
-      padding: 8px;
       margin-top: 5px;
-      border: 1.5px solid #b33a00;
-      border-radius: 6px;
-      font-size: 1rem;
-      resize: vertical;
-      font-family: Arial, sans-serif;
     }
-    form textarea {
-      min-height: 80px;
+    .quote {
+      quotes: "“" "”";
     }
-    form button.submit-btn {
-      margin-top: 20px;
-      background-color: #b33a00;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border-radius: 30px;
+    .quote::before {
+      content: open-quote;
+    }
+    .quote::after {
+      content: close-quote;
+    }
+    .floating-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: yellow;
+      color: black;
+      padding: 10px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      width: 100%;
+      z-index: 10;
     }
-    form button.submit-btn:hover {
-      background-color: #7a1d00;
+    .menu {
+      padding: 20px;
     }
-    /* Animaciones */
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
     }
-    /* Responsive */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      nav a {
-        margin: 0 8px;
-        font-size: 1rem;
-      }
-      ul.menu-list li {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      ul.menu-list li span {
-        margin-top: 6px;
-        font-weight: 700;
-      }
-      .contact-info {
-        font-size: 1rem;
-      }
-      .social-icons a {
-        font-size: 1.3rem;
-      }
-      #cotiza-evento-float {
-        top: 15px;
-        right: 15px;
-        padding: 10px 16px;
-        font-size: 0.9rem;
-      }
+    .whatsapp, .instagram {
+      font-size: 1.5rem;
+      margin: 10px;
+    }
+    .menu-section {
+      margin: 20px 0;
+    }
+    #comentarios {
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    #comentarios form {
+      margin-bottom: 20px;
+    }
+    #comentarios div {
+      background: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
     }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
   <header>
     <h1>TACOS LOS AZ</h1>
-    <p class="subtitulo">Tacos y lonches de bistec, adobada y barbacoa directo del corazón de Guadalajara</p>
-    <nav>
-      <a href="#menu">Menú</a>
-      <a href="#opiniones">Opiniones</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <p class="quote">"Tacos y lonches de bistec, adobada y barbacoa directo del corazón de Guadalajara"</p>
+    <div class="floating-btn" onclick="mostrarFormulario()">
+      <i class="fa-solid fa-calendar-days"></i> Cotiza tu evento
+    </div>
   </header>
 
-  <section id="menu">
-    <h2>Menú y Precios</h2>
+  <section class="menu">
+    <h3 style="text-align:center; font-weight:normal;">Nos encuentras <strong>sábados y domingos de 8:00 am a 2:00 pm</strong></h3>
+    <h2 class="section-title">Menú y Precios</h2>
 
-    <h3>TACOS</h3>
-    <ul class="menu-list">
-      <li data-name="Barbacoa" data-price="19" data-weight="50" data-img="https://i.imgur.com/kwXUmvh.jpg">
-        Taco de Barbacoa <span>$19</span>
-      </li>
-      <li data-name="Bistec" data-price="24" data-weight="50" data-img="https://i.imgur.com/7KUFXkJ.jpg">
-        Taco de Bistec <span>$24</span>
-      </li>
-      <li data-name="Adobada" data-price="22" data-weight="50" data-img="https://i.imgur.com/D67pHGi.jpg">
-        Taco de Adobada <span>$22</span>
-      </li>
-    </ul>
-
-    <h3>Lonches</h3>
-    <ul class="menu-list">
-      <li data-name="Lonche de Bistec" data-price="60" data-weight="150" data-img="https://i.imgur.com/9y2QVtF.jpg">
-        Lonche de Bistec <span>$60</span>
-      </li>
-      <li data-name="Lonche de Barbacoa" data-price="70" data-weight="150" data-img="https://i.imgur.com/Ar3b0qW.jpg">
-        Lonche de Barbacoa <span>$70</span>
-      </li>
-      <li data-name="Lonche de Adobada" data-price="70" data-weight="150" data-img="https://i.imgur.com/6HLPkKu.jpg">
-        Lonche de Adobada <span>$70</span>
-      </li>
-    </ul>
-
-    <h3>Aguas Frescas</h3>
-    <ul class="menu-list">
-      <li data-name="Agua fresca chica (medio litro)" data-price="25" data-weight="" data-img="https://i.imgur.com/7Wyx9Qa.jpg">
-        Agua fresca chica (medio litro) <span>$25</span>
-      </li>
-      <li data-name="Agua fresca grande (1 litro)" data-price="30" data-weight="" data-img="https://i.imgur.com/4wkdsyU.jpg">
-        Agua fresca grande (1 litro) <span>$30</span>
-      </li>
-    </ul>
-
-    <h3>Refrescos</h3>
-    <ul class="menu-list">
-      <li data-name="Refresco 355 ml" data-price="18" data-weight="" data-img="https://i.imgur.com/w9F3YIo.jpg">
-        Refresco 355 ml <span>$18</span>
-      </li>
-      <li data-name="Refresco 500 ml" data-price="25" data-weight="" data-img="https://i.imgur.com/yzxC5Ac.jpg">
-        Refresco 500 ml <span>$25</span>
-      </li>
-    </ul>
-  </section>
-
-  <section id="opiniones">
-    <h2>Opiniones de Nuestros Clientes</h2>
-    <div class="testimonial">
-      "Los mejores tacos de barbacoa que he probado en Guadalajara. Siempre frescos y buen servicio."
-      <strong>- María G.</strong>
+    <div class="menu-section">
+      <h3>Tacos</h3>
+      <ul>
+        <li>Taco de barbacoa - $19</li>
+        <li>Taco de bistec - $24</li>
+        <li>Taco de adobada - $22</li>
+      </ul>
     </div>
-    <div class="testimonial">
-      "El sabor es auténtico y el precio justo. ¡Recomendados para toda la familia!"
-      <strong>- Juan P.</strong>
+
+    <div class="menu-section">
+      <h3>Lonches</h3>
+      <ul>
+        <li>Lonche de bistec - $80</li>
+        <li>Lonche de barbacoa - $70</li>
+        <li>Lonche de adobada - $70</li>
+      </ul>
     </div>
-    <div class="testimonial">
-      "Me encanta la variedad y las aguas frescas están deliciosas."
-      <strong>- Ana R.</strong>
+
+    <div class="menu-section">
+      <h3>Aguas frescas</h3>
+      <ul>
+        <li>Chica (500ml) - $25</li>
+        <li>Grande (1L) - $30</li>
+      </ul>
+    </div>
+
+    <div class="menu-section">
+      <h3>Refrescos</h3>
+      <ul>
+        <li>355 ml - $18</li>
+        <li>500 ml - $25</li>
+      </ul>
     </div>
   </section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p class="contact-info">Teléfono: <a href="tel:+523311450168">33 1145 0168</a></p>
-    <p class="contact-info">
-      Dirección: 
-      <a href="https://www.google.com/maps/search/?api=1&query=Morelos+48,+Jardines+de+San+Francisco,+44799+Guadalajara,+Jal." target="_blank" rel="noopener noreferrer">
-        Morelos 48, Jardines de San Francisco, 44799 Guadalajara, Jal.
-      </a>
-    </p>
-    <p class="horarios">
-      Nos ponemos todos los sábados y domingos de 8 am a 2 pm
-    </p>
-    <div class="social-icons">
-      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-square"></i></a>
-    </div>
+  <section id="comentarios">
+    <h2 class="section-title">Comentarios de nuestros clientes</h2>
+    <form id="formComentario">
+      <input type="text" id="nombre" placeholder="Tu nombre" required />
+      <input type="text" id="mensaje" placeholder="Tu comentario" required />
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="listaComentarios"></div>
   </section>
 
-  <!-- Modal menú -->
-  <div class="modal" id="menuModal">
-    <div class="modal-content">
-      <span class="close-btn" id="modalClose">&times;</span>
-      <h3 id="modalName"></h3>
-      <img id="modalImg" src="" alt="Imagen" />
-      <p><strong>Precio:</strong> $<span id="modalPrice"></span></p>
-      <p id="weightPara"><strong>Peso estimado:</strong> <span id="modalWeight"></span> gramos</p>
-    </div>
+  <section class="contacto" style="padding: 20px;">
+    <h2 class="section-title">Contacto</h2>
+    <p><strong>Ubicación:</strong> <a href="https://www.google.com/maps?q=Morelos+48,+Jardines+de+San+Francisco,+44799+Guadalajara,+Jal." target="_blank">Morelos 48, Jardines de San Francisco, 44799 Guadalajara, Jal.</a></p>
+    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/tacos_los_azmx" target="_blank"><i class="fab fa-instagram instagram"></i> tacos_los_azmx</a></p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/523311450168" target="_blank"><i class="fab fa-whatsapp whatsapp"></i> 3311450168</a></p>
+    <p><strong>Responsables:</strong> Oscar Lomelí, Luis Araiza y Enrique Sánchez</p>
+  </section>
+
+  <!-- Formulario modal -->
+  <div id="formModal" style="display:none; position:fixed; top:20%; left:50%; transform:translateX(-50%); background:white; padding:20px; border:1px solid #ccc; z-index:100;">
+    <h3>Cotiza tu evento</h3>
+    <form onsubmit="enviarWhatsApp(); return false;">
+      <input type="text" id="cotizaNombre" placeholder="Tu nombre" required><br><br>
+      <input type="text" id="cotizaTelefono" placeholder="Tu teléfono" required><br><br>
+      <textarea id="cotizaDescripcion" placeholder="¿Qué necesitas?" required></textarea><br><br>
+      <input type="number" id="cotizaPersonas" placeholder="¿Para cuántas personas?" required><br><br>
+      <button type="submit">Enviar por WhatsApp</button>
+      <button type="button" onclick="cerrarFormulario()">Cancelar</button>
+    </form>
   </div>
-
-  <!-- Modal cotiza evento -->
-  <div class="modal" id="cotizaModal">
-    <div class="modal-content">
-      <span class="close-btn" id="cotizaClose">&times;</span>
-      <h3>Cotiza tu evento</h3>
-      <form id="cotizaForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" />
-        
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required placeholder="Tu número de teléfono" pattern="[0-9\s\-\+\(\)]{7,}" />
-        
-        <label for="descripcion">Descripción del evento:</label>
-        <textarea id="descripcion" name="descripcion" required placeholder="Cuéntanos qué deseas para tu evento"></textarea>
-        
-        <label for="personas">Número de personas:</label>
-        <input type="number" id="personas" name="personas" required min="1" placeholder="¿Para cuántas personas?" />
-        
-        <button type="submit" class="submit-btn">Enviar por WhatsApp</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Botón flotante WhatsApp -->
-  <a id="whatsapp-float" href="https://wa.me/523311450168" target="_blank" aria-label="WhatsApp Tacos Los AZ" title="WhatsApp Tacos Los AZ">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Botón flotante Instagram -->
-  <a id="instagram-float" href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram Tacos Los AZ" title="Instagram Tacos Los AZ">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <!-- Botón flotante Cotiza tu evento -->
-  <button id="cotiza-evento-float" aria-label="Cotiza tu evento">
-    <i class="fas fa-calendar-alt"></i> Cotiza tu evento
-  </button>
 
   <script>
-    // Mostrar modal menú con info al hacer click en un producto
-    const menuItems = document.querySelectorAll('.menu-list li');
-    const modal = document.getElementById('menuModal');
-    const modalName = document.getElementById('modalName');
-    const modalImg = document.getElementById('modalImg');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalWeight = document.getElementById('modalWeight');
-    const weightPara = document.getElementById('weightPara');
-    const modalClose = document.getElementById('modalClose');
+    function mostrarFormulario() {
+      document.getElementById('formModal').style.display = 'block';
+    }
 
-    menuItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const name = item.getAttribute('data-name');
-        const price = item.getAttribute('data-price');
-        const weight = item.getAttribute('data-weight');
-        const img = item.getAttribute('data-img');
+    function cerrarFormulario() {
+      document.getElementById('formModal').style.display = 'none';
+    }
 
-        modalName.textContent = name;
-        modalPrice.textContent = price;
-        modalImg.src = img;
-        modalImg.alt = name;
-        if(weight) {
-          modalWeight.textContent = weight;
-          weightPara.style.display = 'block';
-        } else {
-          weightPara.style.display = 'none';
-        }
-        modal.style.display = 'flex';
-      });
-    });
+    function enviarWhatsApp() {
+      const nombre = document.getElementById('cotizaNombre').value;
+      const telefono = document.getElementById('cotizaTelefono').value;
+      const descripcion = document.getElementById('cotizaDescripcion').value;
+      const personas = document.getElementById('cotizaPersonas').value;
 
-    modalClose.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-      if(e.target === modal) {
-        modal.style.display = 'none';
-      }
-      if(e.target === cotizaModal) {
-        cotizaModal.style.display = 'none';
-      }
-    });
-
-    // Modal cotiza evento
-    const cotizaBtn = document.getElementById('cotiza-evento-float');
-    const cotizaModal = document.getElementById('cotizaModal');
-    const cotizaClose = document.getElementById('cotizaClose');
-    const cotizaForm = document.getElementById('cotizaForm');
-
-    cotizaBtn.addEventListener('click', () => {
-      cotizaModal.style.display = 'flex';
-    });
-
-    cotizaClose.addEventListener('click', () => {
-      cotizaModal.style.display = 'none';
-    });
-
-    cotizaForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nombre = document.getElementById('nombre').value.trim();
-      const telefono = document.getElementById('telefono').value.trim();
-      const descripcion = document.getElementById('descripcion').value.trim();
-      const personas = document.getElementById('personas').value.trim();
-
-      if(!nombre || !telefono || !descripcion || !personas) {
-        alert('Por favor completa todos los campos.');
-        return;
-      }
-
-      // Formato mensaje WhatsApp
-      const mensaje = `Hola, quiero cotizar un evento:%0A` +
-                      `Nombre: ${nombre}%0A` +
-                      `Teléfono: ${telefono}%0A` +
-                      `Descripción: ${descripcion}%0A` +
-                      `Número de personas: ${personas}`;
-
-      // Abrir WhatsApp con mensaje prellenado
-      const url = `https://wa.me/523311450168?text=${mensaje}`;
+      const mensaje = `Hola, soy ${nombre}. Mi número es ${telefono}. Deseo cotizar: ${descripcion}. Es para ${personas} personas.`;
+      const url = `https://wa.me/523311450168?text=${encodeURIComponent(mensaje)}`;
       window.open(url, '_blank');
+    }
 
-      // Cerrar modal y limpiar formulario
-      cotizaModal.style.display = 'none';
-      cotizaForm.reset();
+    // Comentarios
+    const form = document.getElementById('formComentario');
+    const lista = document.getElementById('listaComentarios');
+    let comentarios = [];
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const mensaje = document.getElementById('mensaje').value;
+
+      if (comentarios.length >= 10) comentarios.shift(); // Elimina el primero si hay más de 10
+      comentarios.push({nombre, mensaje});
+      actualizarComentarios();
+      form.reset();
     });
-  </script>
 
+    function actualizarComentarios() {
+      lista.innerHTML = '';
+      comentarios.forEach(c => {
+        const div = document.createElement('div');
+        div.innerHTML = `<strong>${c.nombre}:</strong> ${c.mensaje}`;
+        lista.appendChild(div);
+      });
+    }
+  </script>
 </body>
 </html>
