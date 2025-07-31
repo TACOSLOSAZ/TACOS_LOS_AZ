@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -30,7 +30,8 @@
     }
     h2, h3 {
       color: #3a2e2a;
-      cursor: pointer;
+      /* Eliminado cursor pointer para títulos */
+      cursor: default;
     }
     .menu-list {
       list-style: none;
@@ -44,6 +45,7 @@
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
       display: flex;
       justify-content: space-between;
+      cursor: pointer; /* cursor pointer para items */
     }
     .horarios {
       font-style: italic;
@@ -69,6 +71,22 @@
     }
     .floating-btn a.cotiza {
       background: #f4a261;
+      position: relative;
+    }
+    .floating-btn a.cotiza::after {
+      content: "Realiza tu cotización para eventos aquí";
+      position: absolute;
+      right: 110%;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      background: #fff3e0;
+      color: #000;
+      padding: 4px 8px;
+      border-radius: 6px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      font-size: 14px;
+      opacity: 1;
     }
     footer {
       background: #a63f2a;
@@ -117,29 +135,29 @@
   </header>
 
   <section id="menu">
-    <h2 onclick="abrirInfo('TACOS')">Menú y Precios</h2>
+    <h2>Menú y Precios</h2>
     <p class="horarios">Horario: Sábados y Domingos de 8:00 AM a 2:00 PM</p>
 
-    <h3 onclick="abrirInfo('TACOS')">Tacos</h3>
+    <h3>Tacos</h3>
     <ul class="menu-list">
-      <li>Tacos de Barbacoa <span>$19</span></li>
-      <li>Tacos de Bistec <span>$24</span></li>
-      <li>Tacos de Adobada <span>$22</span></li>
+      <li onclick="abrirInfo('TACOS_BARBACOA')">Tacos de Barbacoa <span>$19</span></li>
+      <li onclick="abrirInfo('TACOS_BISTEC')">Tacos de Bistec <span>$24</span></li>
+      <li onclick="abrirInfo('TACOS_ADOBADA')">Tacos de Adobada <span>$22</span></li>
     </ul>
 
-    <h3 onclick="abrirInfo('LONCHES')">Lonches</h3>
+    <h3>Lonches</h3>
     <ul class="menu-list">
-      <li>Lonche de Bistec <span>$80</span></li>
-      <li>Lonche de Barbacoa <span>$70</span></li>
-      <li>Lonche de Adobada <span>$70</span></li>
+      <li onclick="abrirInfo('LONCHE_BISTEC')">Lonche de Bistec <span>$80</span></li>
+      <li onclick="abrirInfo('LONCHE_BARBACOA')">Lonche de Barbacoa <span>$70</span></li>
+      <li onclick="abrirInfo('LONCHE_ADOBADA')">Lonche de Adobada <span>$70</span></li>
     </ul>
 
-    <h3 onclick="abrirInfo('BEBIDAS')">Bebidas</h3>
+    <h3>Bebidas</h3>
     <ul class="menu-list">
-      <li>Agua fresca chica (0.5L) <span>$25</span></li>
-      <li>Agua fresca grande (1L) <span>$30</span></li>
-      <li>Refresco 355 ml <span>$18</span></li>
-      <li>Refresco 500 ml <span>$25</span></li>
+      <li onclick="abrirInfo('AGUA_CHICA')">Agua fresca chica (0.5L) <span>$25</span></li>
+      <li onclick="abrirInfo('AGUA_GRANDE')">Agua fresca grande (1L) <span>$30</span></li>
+      <li onclick="abrirInfo('REF_355')">Refresco 355 ml <span>$18</span></li>
+      <li onclick="abrirInfo('REF_500')">Refresco 500 ml <span>$25</span></li>
     </ul>
   </section>
 
@@ -220,9 +238,16 @@
     function abrirInfo(tipo) {
       const infoModal = document.getElementById('info-modal');
       const texto = {
-        'TACOS': 'Taco de barbacoa exquisito, preparado con receta tradicional jalisciense.',
-        'LONCHES': 'Lonches rellenos de carne jugosa con sazón casero y pan suavecito.',
-        'BEBIDAS': 'Aguas frescas naturales y refrescos fríos para acompañar tus tacos.'
+        TACOS_BARBACOA: 'Taco de barbacoa exquisito, preparado con receta tradicional jalisciense.',
+        TACOS_BISTEC: 'Taco de bistec jugoso con cebollita y salsa al gusto.',
+        TACOS_ADOBADA: 'Taco de adobada con piña y especias mexicanas.',
+        LONCHE_BISTEC: 'Lonche de bistec con pan suave y carne bien sazonada.',
+        LONCHE_BARBACOA: 'Lonche de barbacoa que se deshace en tu boca.',
+        LONCHE_ADOBADA: 'Lonche de adobada con el toque perfecto de picante.',
+        AGUA_CHICA: 'Agua fresca de sabores naturales en presentación de medio litro.',
+        AGUA_GRANDE: 'Agua fresca grande ideal para compartir.',
+        REF_355: 'Refresco frío en presentación personal.',
+        REF_500: 'Refresco de 500ml para acompañar tu comida.'
       };
       document.getElementById('info-text').textContent = texto[tipo];
       infoModal.style.display = 'flex';
