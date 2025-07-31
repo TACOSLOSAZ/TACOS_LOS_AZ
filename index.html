@@ -2,641 +2,193 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tacos Los AZ | Menú Interactivo</title>
-  <meta name="description" content="Disfruta los mejores tacos de barbacoa, bistec y adobada en Tacos Los AZ. Aguas frescas, refrescos y servicio de calidad." />
-  <meta name="keywords" content="tacos, barbacoa, bistec, adobada, aguas frescas, tacos los az, comida mexicana" />
-  <meta name="author" content="Tacos Los AZ" />
-  <!-- FontAwesome CDN para íconos -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tacos Los AZ | Menú</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Reset y básicos */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
     body {
-      background: #f5efe6 url('https://www.transparenttextures.com/patterns/linen.png') repeat;
-      color: #5a3e1b;
-      line-height: 1.6;
-      padding-bottom: 130px;
-      max-width: 900px;
-      margin: 20px auto;
-      position: relative;
-      font-size: 16px;
-    }
-    a {
-      color: #a0512a;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #7a3618;
-      text-decoration: underline;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://www.transparenttextures.com/patterns/beige-paper.png');
+      background-color: #f5f0e6;
     }
     header {
-      background: #a0522d;
-      color: #fff7f0;
-      padding: 20px 15px;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(160,82,45,0.5);
-      margin-bottom: 35px;
-      border-radius: 12px;
-      position: relative;
+      padding: 2rem;
+      background: #7b5e57;
+      color: #fff;
     }
-    header h1 {
+    h1 {
       font-size: 3rem;
-      letter-spacing: 3px;
-      margin-bottom: 5px;
-      font-weight: 900;
-      text-shadow: 1px 1px 2px #4a2e0b;
-    }
-    header p.subtitulo {
-      font-style: italic;
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: #f4e7d3;
-      text-shadow: 1px 1px 1px #7a4f22;
-      margin-bottom: 15px;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      margin: 0 18px;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: #f4e7d3;
-      text-shadow: 1px 1px 2px #7a4f22;
-      cursor: pointer;
-    }
-    nav a:hover {
-      color: #ffbb7b;
-      text-shadow: 1px 1px 3px #502b06;
+      border-radius: 12px;
     }
     section {
-      margin-bottom: 50px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 0.7s ease forwards;
+      padding: 2rem;
     }
-    section:nth-of-type(1) { animation-delay: 0.15s; }
-    section:nth-of-type(2) { animation-delay: 0.4s; }
-    section:nth-of-type(3) { animation-delay: 0.65s; }
-    section:nth-of-type(4) { animation-delay: 0.85s; }
-    section h2 {
-      margin-bottom: 18px;
-      border-bottom: 3px solid #a0522d;
-      padding-bottom: 6px;
-      font-size: 2rem;
-      letter-spacing: 1.5px;
-      font-weight: 800;
-      text-shadow: 1px 1px 1px #7a4f22;
+    h2, h3 {
+      color: #3a2e2a;
     }
-    /* Menú */
-    ul.menu-list {
+    .menu-list {
       list-style: none;
-      padding-left: 0;
+      padding: 0;
     }
-    ul.menu-list li {
-      background: #f9f3e8;
-      margin: 12px 0;
-      padding: 14px 25px;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 2px 3px 7px rgba(160,82,45,0.3);
+    .menu-list li {
+      margin-bottom: 10px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
       display: flex;
       justify-content: space-between;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: #5a3e1b;
-      transition: background-color 0.35s ease, transform 0.3s ease;
-      user-select: none;
-    }
-    ul.menu-list li:hover {
-      background: #a0522d;
-      color: #fff7f0;
-      transform: scale(1.05);
-      box-shadow: 2px 6px 12px rgba(160,82,45,0.6);
-    }
-    ul.menu-list li span {
-      font-weight: 900;
-      font-size: 1.2rem;
-      color: inherit;
-    }
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 11000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.75);
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      animation: fadeIn 0.3s ease forwards;
-    }
-    .modal-content {
-      background: #f9f3e8;
-      padding: 25px 30px;
-      border-radius: 15px;
-      width: 100%;
-      max-width: 450px;
-      box-shadow: 0 0 20px rgba(160,82,45,0.7);
-      position: relative;
-      text-align: center;
-      animation: slideIn 0.3s ease forwards;
-    }
-    .modal-content img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      user-select: none;
-      box-shadow: 0 4px 8px rgba(160,82,45,0.3);
-    }
-    .close-btn {
-      position: absolute;
-      right: 14px;
-      top: 14px;
-      font-size: 28px;
-      font-weight: 900;
-      color: #a0522d;
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.25s ease;
-    }
-    .close-btn:hover {
-      color: #7a3618;
-    }
-    .modal p {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #5a3e1b;
-      margin-top: 12px;
-    }
-    /* Opiniones */
-    .testimonial {
-      background: #f4e7d3;
-      border-left: 6px solid #a0522d;
-      padding: 18px 25px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      font-style: italic;
-      box-shadow: 3px 3px 9px rgba(160,82,45,0.15);
-      font-size: 1.1rem;
-      color: #5a3e1b;
-      position: relative;
-      line-height: 1.4;
-      word-wrap: break-word;
-    }
-    .testimonial::before {
-      content: '“';
-      font-size: 3rem;
-      position: absolute;
-      top: 8px;
-      left: 15px;
-      color: #a0522d;
-      font-weight: 900;
-      font-family: serif;
-    }
-    .testimonial strong {
-      font-style: normal;
-      color: #a0522d;
-      display: block;
-      margin-top: 15px;
-      text-align: right;
-      font-weight: 900;
-      font-size: 1rem;
-      text-shadow: 1px 1px 1px #7a4f22;
-    }
-    /* Formulario de opiniones */
-    #comentarios-form {
-      background: #f9f3e8;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 2px 3px 10px rgba(160,82,45,0.2);
-      max-width: 600px;
-      margin-top: 25px;
-    }
-    #comentarios-form label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 700;
-      color: #5a3e1b;
-    }
-    #comentarios-form input[type="text"],
-    #comentarios-form textarea {
-      width: 100%;
-      padding: 8px 12px;
-      border: 1.7px solid #a0522d;
-      border-radius: 8px;
-      font-size: 1rem;
-      resize: vertical;
-      font-family: inherit;
-      transition: border-color 0.3s ease;
-    }
-    #comentarios-form input[type="text"]:focus,
-    #comentarios-form textarea:focus {
-      outline: none;
-      border-color: #f8c200;
-      box-shadow: 0 0 6px #f8c200aa;
-    }
-    #comentarios-form textarea {
-      min-height: 80px;
-      margin-bottom: 14px;
-    }
-    #comentarios-form button {
-      background-color: #a0522d;
-      color: #fff7f0;
-      border: none;
-      padding: 12px 22px;
-      font-size: 1.1rem;
-      font-weight: 900;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    #comentarios-form button:hover {
-      background-color: #7a3618;
-      transform: scale(1.05);
-    }
-    /* Contacto */
-    .contact-info {
-      font-size: 1.15rem;
-      color: #5a3e1b;
-      margin-bottom: 8px;
     }
     .horarios {
-      margin-top: 10px;
       font-style: italic;
-      font-weight: 700;
-      color: #a0522d;
-      font-size: 1.1rem;
-      text-shadow: 1px 1px 0 #f9f3e8;
     }
-    .social-icons {
-      margin-top: 15px;
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
     }
-    .social-icons a {
-      margin-right: 20px;
-      font-size: 2.2rem;
-      color: #a0522d;
-      transition: color 0.3s ease, transform 0.3s ease;
-      vertical-align: middle;
+    .floating-btn a {
       display: inline-block;
-    }
-    .social-icons a:hover {
-      color: #7a3618;
-      transform: scale(1.2);
-    }
-    /* Botones flotantes */
-    #whatsapp-float, #instagram-float {
-      position: fixed;
-      right: 25px;
-      border-radius: 50%;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.25);
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: #25d366;
       color: white;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      z-index: 12000;
+      padding: 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      margin: 5px;
+      font-size: 20px;
     }
-    #whatsapp-float {
-      bottom: 25px;
-      width: 60px;
-      height: 60px;
-      background-color: #25d366;
-      font-size: 32px;
+    footer {
+      background: #7b5e57;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
     }
-    #whatsapp-float:hover {
-      box-shadow: 0 0 20px #25d366;
-      transform: scale(1.1);
-    }
-    #instagram-float {
-      bottom: 95px;
-      width: 55px;
-      height: 55px;
-      background: #e1306c;
-      font-size: 28px;
-    }
-    #instagram-float:hover {
-      box-shadow: 0 0 20px #e1306c;
-      transform: scale(1.1);
-    }
-    /* Botón cotiza evento flotante */
-    #cotiza-evento-float {
+    .modal {
       position: fixed;
-      top: 25px;
-      right: 25px;
-      background-color: #f8c200;
-      color: #5a3e1b;
-      font-weight: 800;
-      border-radius: 30px;
-      padding: 14px 22px;
-      font-size: 1.05rem;
-      cursor: pointer;
-      box-shadow: 0 6px 14px rgba(248,194,0,0.7);
-      display: flex;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
       align-items: center;
-      gap: 10px;
-      z-index: 13000;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      user-select: none;
+      justify-content: center;
     }
-    #cotiza-evento-float i {
-      font-size: 1.5rem;
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
     }
-    #cotiza-evento-float:hover {
-      background-color: #dbaf00;
-      transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(219,175,0,0.9);
-    }
-    /* Formulario modal */
-    form {
-      text-align: left;
-    }
-    form label {
+    .modal-content label, .modal-content input, .modal-content textarea {
       display: block;
-      margin-top: 15px;
-      font-weight: 700;
-      color: #5a3e1b;
-    }
-    form input[type="text"],
-    form input[type="tel"],
-    form textarea,
-    form input[type="number"] {
       width: 100%;
-      padding: 9px 12px;
-      margin-top: 7px;
-      border: 1.7px solid #a0522d;
-      border-radius: 8px;
-      font-size: 1rem;
-      resize: vertical;
-      font-family: inherit;
-      transition: border-color 0.3s ease;
+      margin-bottom: 10px;
     }
-    form input[type="text"]:focus,
-    form input[type="tel"]:focus,
-    form textarea:focus,
-    form input[type="number"]:focus {
-      outline: none;
-      border-color: #f8c200;
-      box-shadow: 0 0 6px #f8c200aa;
+    .modal-content input, .modal-content textarea {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
-    form textarea {
-      min-height: 90px;
-    }
-    form button.submit-btn {
-      margin-top: 22px;
-      background-color: #a0522d;
-      color: #fff7f0;
-      border: none;
-      padding: 14px 22px;
-      font-size: 1.15rem;
-      font-weight: 900;
-      border-radius: 30px;
+    .close-btn {
+      float: right;
+      font-size: 20px;
       cursor: pointer;
-      width: 100%;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    form button.submit-btn:hover {
-      background-color: #7a3618;
-      transform: scale(1.05);
-    }
-    /* Animaciones */
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-    @keyframes slideIn {
-      from {
-        transform: translateY(40px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-    /* Responsive */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-      nav a {
-        margin: 0 10px;
-        font-size: 1rem;
-      }
-      ul.menu-list li {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      ul.menu-list li span {
-        margin-top: 8px;
-        font-weight: 900;
-        font-size: 1.1rem;
-      }
-      .contact-info {
-        font-size: 1rem;
-      }
-      .social-icons a {
-        font-size: 1.8rem;
-        margin-right: 14px;
-      }
-      #cotiza-evento-float {
-        top: 15px;
-        right: 15px;
-        padding: 10px 18px;
-        font-size: 0.95rem;
-      }
-      #whatsapp-float {
-        width: 50px;
-        height: 50px;
-        font-size: 26px;
-        bottom: 20px;
-        right: 20px;
-      }
-      #instagram-float {
-        width: 45px;
-        height: 45px;
-        font-size: 22px;
-        bottom: 85px;
-        right: 20px;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Tacos</h1>
-    <h1>Los AZ</h1>
-    <p class="subtitulo">“Los mejores tacos de barbacoa, bistec y adobada”</p>
-    <nav>
-      <a href="#menu">Menú y Precios</a>
-      <a href="#opiniones">Opiniones</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <h1>Tacos Los AZ</h1>
+    <p>"Los tacos que te hacen volver"</p>
   </header>
 
   <section id="menu">
     <h2>Menú y Precios</h2>
     <p class="horarios">Horario: Lunes a Domingo 9:00 AM - 8:00 PM</p>
+
+    <h3>Tacos</h3>
     <ul class="menu-list">
-      <li data-img="https://images.unsplash.com/photo-1576798501579-29ecfef71a8e?auto=format&fit=crop&w=500&q=80" data-desc="Deliciosos tacos de barbacoa preparados al estilo tradicional, suaves y jugosos.">
-        Tacos de Barbacoa <span>$19</span>
-      </li>
-      <li data-img="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=500&q=80" data-desc="Tacos de bistec jugosos y bien sazonados, preparados al momento.">
-        Tacos de Bistec <span>$22</span>
-      </li>
-      <li data-img="https://images.unsplash.com/photo-1617191516251-0fda968bc982?auto=format&fit=crop&w=500&q=80" data-desc="Tacos de adobada con el sabor típico y picosito que te encantará.">
-        Tacos de Adobada <span>$22</span>
-      </li>
-      <li data-img="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=500&q=80" data-desc="Lonche de bistec en pan suave, con queso y salsa especial.">
-        Lonche de Bistec <span>$80</span>
-      </li>
+      <li>Tacos de Barbacoa <span>$19</span></li>
+      <li>Tacos de Bistec <span>$24</span></li>
+      <li>Tacos de Adobada <span>$22</span></li>
     </ul>
+
+    <h3>Lonches</h3>
+    <ul class="menu-list">
+      <li>Lonche de Bistec <span>$80</span></li>
+      <li>Lonche de Barbacoa <span>$70</span></li>
+      <li>Lonche de Adobada <span>$70</span></li>
+    </ul>
+
     <h3>Bebidas</h3>
     <ul class="menu-list">
-      <li>
-        Agua fresca chica (0.5 L) <span>$25</span>
-      </li>
-      <li>
-        Agua fresca grande (1 L) <span>$30</span>
-      </li>
-      <li>
-        Refresco 355 ml <span>$18</span>
-      </li>
-      <li>
-        Refresco 500 ml <span>$25</span>
-      </li>
+      <li>Agua fresca chica (0.5L) <span>$25</span></li>
+      <li>Agua fresca grande (1L) <span>$30</span></li>
+      <li>Refresco 355 ml <span>$18</span></li>
+      <li>Refresco 500 ml <span>$25</span></li>
     </ul>
   </section>
 
-  <!-- Modal para detalles -->
-  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+  <section id="opiniones">
+    <h2>Opiniones de los clientes</h2>
+    <p>¡Déjanos tu opinión en redes sociales o contáctanos!</p>
+    <!-- Se puede implementar una caja de comentarios externa o embed en futuro -->
+  </section>
+
+  <footer>
+    <p>© 2025 Tacos Los AZ</p>
+    <p>Contacto: Oscar Lomelí, Luis Araiza y Enrique Sánchez</p>
+  </footer>
+
+  <div class="floating-btn">
+    <a href="https://wa.me/3311450168" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" id="cotiza-evento-float" title="Cotiza tu evento" style="background:#f4a261;"><i class="fa fa-calendar-alt"></i></a>
+  </div>
+
+  <!-- Modal Cotiza Evento -->
+  <div id="cotiza-modal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-content">
-      <span class="close-btn" role="button" aria-label="Cerrar modal">&times;</span>
-      <h3 id="modalTitle"></h3>
-      <img src="" alt="" id="modalImg" />
-      <p id="modalDesc"></p>
+      <span class="close-btn" onclick="cerrarCotiza()" aria-label="Cerrar">&times;</span>
+      <h3>Cotiza tu Evento</h3>
+      <form id="form-cotiza">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required placeholder="Tu nombre">
+        <label>Teléfono:</label>
+        <input type="tel" name="telefono" required placeholder="Tu número de contacto">
+        <label>¿Para cuántas personas?</label>
+        <input type="number" name="personas" min="1" required>
+        <label>¿Qué esperas del servicio?</label>
+        <textarea name="expectativa" required></textarea>
+        <p>Ubicación: <a href="https://www.google.com/maps?q=20.659698,-103.349609" target="_blank">Ver ubicación en Google Maps</a></p>
+        <button type="submit">Enviar solicitud</button>
+      </form>
     </div>
   </div>
 
-  <section id="opiniones">
-    <h2>Opiniones de los Clientes</h2>
-    <div id="comentarios-list">
-      <div class="testimonial"><p>¡Los mejores tacos que he probado en la ciudad!</p><strong>- Ana M.</strong></div>
-      <div class="testimonial"><p>Excelente sabor y atención. Recomendados al 100%.</p><strong>- Luis R.</strong></div>
-    </div>
-
-    <form id="comentarios-form" aria-label="Formulario para dejar comentarios">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre" />
-      <label for="comentario">Comentario:</label>
-      <textarea id="comentario" name="comentario" required placeholder="Escribe tu opinión"></textarea>
-      <button type="submit">Enviar comentario</button>
-    </form>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p class="contact-info">Oscar Lomelí - Tel: 3311450168</p>
-    <p class="contact-info">Luis Araiza - Tel: 3312345678</p>
-    <p class="contact-info">Enrique Sánchez - Tel: 3319876543</p>
-    <div class="social-icons">
-      <a href="https://wa.me/5213311450168" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-      </a>
-      <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- Botones flotantes -->
-  <a href="https://wa.me/5213311450168" target="_blank" id="whatsapp-float" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" id="instagram-float" aria-label="Instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <button id="cotiza-evento-float" aria-label="Cotiza tu evento">
-    <i class="fa-regular fa-calendar"></i> Cotiza tu evento
-  </button>
-
   <script>
-    // Abrir modal al dar click en plato del menú
-    const menuItems = document.querySelectorAll('.menu-list li[data-img]');
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalTitle = document.getElementById('modalTitle');
-    const closeBtn = document.querySelector('.close-btn');
-
-    menuItems.forEach(item => {
-      item.addEventListener('click', () => {
-        modalTitle.textContent = item.textContent.trim().split('$')[0].trim();
-        modalImg.src = item.dataset.img;
-        modalImg.alt = modalTitle.textContent;
-        modalDesc.textContent = item.dataset.desc;
-        modal.style.display = 'flex';
-        modal.setAttribute('aria-hidden', 'false');
-      });
-    });
-    closeBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-      modal.setAttribute('aria-hidden', 'true');
-    });
-    modal.addEventListener('click', e => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        modal.setAttribute('aria-hidden', 'true');
-      }
-    });
-
-    // Formulario de comentarios (Opiniones)
-    const form = document.getElementById('comentarios-form');
-    const comentariosList = document.getElementById('comentarios-list');
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const nombre = form.nombre.value.trim();
-      const comentario = form.comentario.value.trim();
-      if (nombre && comentario) {
-        // Crear nuevo comentario
-        const div = document.createElement('div');
-        div.className = 'testimonial';
-        div.innerHTML = `<p>${comentario}</p><strong>- ${nombre}</strong>`;
-        comentariosList.appendChild(div);
-        form.reset();
-        alert('¡Gracias por tu comentario!');
-      } else {
-        alert('Por favor, completa ambos campos.');
-      }
-    });
-
-    // Botón cotiza evento (ejemplo: abre contacto)
     const cotizaBtn = document.getElementById('cotiza-evento-float');
+    const cotizaModal = document.getElementById('cotiza-modal');
+
     cotizaBtn.addEventListener('click', () => {
-      document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+      cotizaModal.style.display = 'flex';
+      cotizaModal.setAttribute('aria-hidden', 'false');
+    });
+
+    function cerrarCotiza() {
+      cotizaModal.style.display = 'none';
+      cotizaModal.setAttribute('aria-hidden', 'true');
+    }
+
+    const formCotiza = document.getElementById('form-cotiza');
+    formCotiza.addEventListener('submit', e => {
+      e.preventDefault();
+      alert("¡Gracias por tu interés! Te contactaremos pronto.");
+      formCotiza.reset();
+      cerrarCotiza();
     });
   </script>
 </body>
