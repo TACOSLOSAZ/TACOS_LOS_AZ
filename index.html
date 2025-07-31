@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tacos Los AZ | Sabor Tradicional Del Corazon De Guadalajara</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #fefaf6;
+      color: #4a2d13;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #fff7ec;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 4px solid #c7661e;
+    }
+    header img {
+      max-width: 150px;
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #4a2d13;
+      font-weight: bold;
+    }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .hero {
+      background: #fff3e0;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #6a3b1e;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    form input, form textarea {
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    form button {
+      padding: 0.75rem;
+      background-color: #c7661e;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #4a2d13;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer a {
+      color: #fff;
+      margin: 0 5px;
+      vertical-align: middle;
+      text-decoration: none;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/mnt/data/tacos los az.jpg" alt="Logo Tacos Los AZ">
+    <h1>Tacos Los AZ</h1>
+    <nav>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Menú</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Sabor que conquista</h2>
+    <p>Tacos de barbacoa, bistec y adobada preparados al momento con el auténtico sabor mexicano.</p>
+  </section>
+
+  <section id="nosotros">
+    <h2>Nosotros</h2>
+    <p>En <strong>Tacos Los AZ</strong> somos una taquería familiar que nació con la misión de compartir el verdadero sabor de los tacos mexicanos. Con ingredientes frescos, recetas tradicionales y atención de calidad, ofrecemos una experiencia que te hará volver una y otra vez.</p>
+  </section>
+
+  <section id="servicios">
+    <h2>Menú</h2>
+    <ul>
+      <li><strong>Tacos de Barbacoa:</strong> Suaves y jugosos, cocinados lentamente para mayor sabor.</li>
+      <li><strong>Tacos de Bistec:</strong> Carne asada al instante con tortillas recién hechas.</li>
+      <li><strong>Tacos de Adobada:</strong> Sazonados con nuestra receta especial, con piña o sin piña.</li>
+      <li><strong>Bebidas:</strong> Refrescos, aguas frescas y más.</li>
+    </ul>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/400x300?text=Barbacoa" alt="Taco de Barbacoa">
+      <img src="https://via.placeholder.com/400x300?text=Bistec" alt="Taco de Bistec">
+      <img src="https://via.placeholder.com/400x300?text=Adobada" alt="Taco de Adobada">
+      <img src="https://via.placeholder.com/400x300?text=Salsas+y+acompañamientos" alt="Salsas y acompañamientos">
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Teléfono: <a href="tel:3311450168">331 145 0168</a></p>
+    <form onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te contactaremos pronto.');">
+      <input type="text" placeholder="Tu nombre" required>
+      <input type="email" placeholder="Tu correo electrónico" required>
+      <textarea placeholder="Mensaje o pedido" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Tacos Los AZ. Todos los derechos reservados.</p>
+    <p>Síguenos en redes:
+      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg" target="_blank" rel="noopener noreferrer" title="Instagram Tacos Los AZ">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width:24px; height:24px; vertical-align:middle;">
+      </a>
+    </p>
+  </footer>
+</body>
+</html>
