@@ -15,10 +15,75 @@
       background: url('https://www.transparenttextures.com/patterns/beige-paper.png');
       background-color: #f5f0e6;
     }
+
+    /* Sección de inicio con animaciones */
+    #inicio {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+    #inicio h1, #inicio p {
+      opacity: 0;
+      transform: translateY(30px);
+      animation-fill-mode: forwards;
+    }
+    #inicio h1 {
+      font-size: 3em;
+      color: black;
+      font-weight: bold;
+      margin-bottom: 10px;
+      animation: fadeSlideUp 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+    #inicio p {
+      font-size: 1.5em;
+      font-style: italic;
+      margin-bottom: 30px;
+      animation: fadeSlideUp 1s ease forwards;
+      animation-delay: 0.8s;
+    }
+    #inicio a {
+      text-decoration: none;
+      background-color: #ff5722;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+      animation: pulse 2.5s infinite, fadeSlideUp 1s ease forwards;
+      animation-delay: 1.3s, 1.3s;
+      opacity: 0;
+      transform: translateY(30px);
+      animation-fill-mode: forwards;
+    }
+    #inicio a:hover {
+      background-color: #e64a19;
+    }
+    @keyframes fadeSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7);
+      }
+      50% {
+        box-shadow: 0 0 15px 8px rgba(255, 87, 34, 0);
+      }
+    }
+
     header {
       text-align: center;
       padding: 2rem;
-      background: #a63f2a; /* rojo cobrizo */
+      background: #a63f2a;
       color: #fff;
       position: relative;
     }
@@ -77,7 +142,7 @@
     .floating-btn a:hover {
       background: #128c7e;
     }
-    /* Botón cotiza en esquina superior derecha */
+
     .cotiza-top-right {
       position: fixed;
       top: 20px;
@@ -102,7 +167,6 @@
     .cotiza-top-right:hover {
       background: #e18f4f;
     }
-    /* Ocultar botón en móviles */
     @media (max-width: 768px) {
       .cotiza-top-right {
         display: none;
@@ -148,6 +212,14 @@
   </style>
 </head>
 <body>
+
+  <!-- Sección de Inicio -->
+  <section id="inicio">
+    <h1>Tacos Los AZ</h1>
+    <p>"Traídos directos del corazón de Guadalajara"</p>
+    <a href="#menu">Ver Menú</a>
+  </section>
+
   <header>
     <h1>TACOS LOS AZ</h1>
     <p>Tacos de barbacoa, bistec y adobada directos del corazón de Guadalajara.</p>
