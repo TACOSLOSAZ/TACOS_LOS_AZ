@@ -2,173 +2,250 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tacos Los AZ | Sabor Tradicional Del Corazon De Guadalajara</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tacos Los AZ | Sabor y Tradición</title>
+  <meta name="description" content="Disfruta los mejores tacos de barbacoa, bistec y adobada en Tacos Los AZ. Aguas frescas, refrescos y servicio de calidad." />
+  <meta name="keywords" content="tacos, barbacoa, bistec, adobada, aguas frescas, tacos los az, comida mexicana" />
+  <meta name="author" content="Tacos Los AZ" />
   <style>
+    /* Reset y básicos */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
     body {
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #fefaf6;
-      color: #4a2d13;
+      background: #fff8f0;
+      color: #3a1f0b;
       line-height: 1.6;
+      padding-bottom: 100px; /* para botón flotante */
+    }
+    a {
+      color: #b33a00;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
     header {
-      background-color: #fff7ec;
-      padding: 2rem;
+      background: #b33a00;
+      color: white;
+      padding: 20px 10px;
       text-align: center;
-      border-bottom: 4px solid #c7661e;
-    }
-    header img {
-      max-width: 150px;
-      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     header h1 {
       font-size: 2.5rem;
       letter-spacing: 2px;
     }
     nav {
-      margin-top: 1rem;
+      margin-top: 10px;
     }
     nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #4a2d13;
+      margin: 0 15px;
       font-weight: bold;
+      font-size: 1.1rem;
     }
     section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 15px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s ease forwards;
     }
-    .hero {
-      background: #fff3e0;
-      padding: 5rem 2rem;
-      text-align: center;
+    section:nth-of-type(1) {
+      animation-delay: 0.1s;
     }
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    section:nth-of-type(2) {
+      animation-delay: 0.3s;
     }
-    .hero p {
-      font-size: 1.2rem;
-      color: #6a3b1e;
+    section:nth-of-type(3) {
+      animation-delay: 0.5s;
     }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
+    section:nth-of-type(4) {
+      animation-delay: 0.7s;
     }
-    .gallery img {
-      width: 100%;
+    h2 {
+      margin-bottom: 15px;
+      border-bottom: 2px solid #b33a00;
+      padding-bottom: 5px;
+    }
+    /* Menú */
+    .menu-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .menu-list li {
+      background: #f3e6d9;
+      margin: 8px 0;
+      padding: 12px 20px;
       border-radius: 8px;
-    }
-    form {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      font-weight: 600;
+      box-shadow: 1px 1px 3px rgba(179,58,0,0.3);
+      transition: background-color 0.3s ease;
     }
-    form input, form textarea {
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
+    .menu-list li:hover {
+      background: #b33a00;
+      color: white;
+      cursor: default;
     }
-    form button {
-      padding: 0.75rem;
-      background-color: #c7661e;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
+    /* Opiniones */
+    .testimonial {
+      background: #f7f2ec;
+      border-left: 5px solid #b33a00;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      font-style: italic;
+      box-shadow: 1px 1px 5px rgba(179,58,0,0.15);
     }
-    footer {
-      background-color: #4a2d13;
-      color: #fff;
+    .testimonial strong {
+      font-style: normal;
+      color: #b33a00;
+      display: block;
+      margin-top: 8px;
+      text-align: right;
+      font-weight: 700;
+    }
+    /* Contacto */
+    .contact-info {
+      font-size: 1.1rem;
+    }
+    .social-icons {
+      margin-top: 15px;
+    }
+    .social-icons a {
+      margin-right: 15px;
+      font-size: 1.5rem;
+      color: #b33a00;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #7a1d00;
+    }
+    /* Botón flotante WhatsApp */
+    #whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       text-align: center;
-      padding: 2rem 1rem;
+      font-size: 30px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
     }
-    footer a {
-      color: #fff;
-      margin: 0 5px;
-      vertical-align: middle;
-      text-decoration: none;
+    #whatsapp-float:hover {
+      background-color: #1ebe57;
     }
+    /* Animaciones */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Responsive */
     @media (max-width: 600px) {
       header h1 {
         font-size: 1.8rem;
       }
-      .hero h2 {
-        font-size: 1.5rem;
+      nav a {
+        margin: 0 8px;
+        font-size: 1rem;
+      }
+      .menu-list li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .menu-list li span {
+        margin-top: 6px;
+        font-weight: 700;
+      }
+      .contact-info {
+        font-size: 1rem;
+      }
+      .social-icons a {
+        font-size: 1.3rem;
       }
     }
   </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
   <header>
-    <img src="/mnt/data/tacos los az.jpg" alt="Logo Tacos Los AZ">
     <h1>Tacos Los AZ</h1>
     <nav>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#servicios">Menú</a>
-      <a href="#galeria">Galería</a>
+      <a href="#menu">Menú</a>
+      <a href="#opiniones">Opiniones</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <h2>Sabor que conquista</h2>
-    <p>Tacos de barbacoa, bistec y adobada preparados al momento con el auténtico sabor mexicano.</p>
-  </section>
+  <section id="menu">
+    <h2>Menú y Precios</h2>
+    <ul class="menu-list">
+      <li>Taco de Barbacoa <span>$19</span></li>
+      <li>Taco de Bistec <span>$22</span></li>
+      <li>Taco de Adobada <span>$22</span></li>
+    </ul>
 
-  <section id="nosotros">
-    <h2>Nosotros</h2>
-    <p>En <strong>Tacos Los AZ</strong> somos una taquería familiar que nació con la misión de compartir el verdadero sabor de los tacos mexicanos. Con ingredientes frescos, recetas tradicionales y atención de calidad, ofrecemos una experiencia que te hará volver una y otra vez.</p>
-  </section>
+    <h3>Aguas Frescas</h3>
+    <ul class="menu-list">
+      <li>Agua fresca chica (medio litro) <span>$25</span></li>
+      <li>Agua fresca grande (1 litro) <span>$30</span></li>
+    </ul>
 
-  <section id="servicios">
-    <h2>Menú</h2>
-    <ul>
-      <li><strong>Tacos de Barbacoa:</strong> Suaves y jugosos, cocinados lentamente para mayor sabor.</li>
-      <li><strong>Tacos de Bistec:</strong> Carne asada al instante con tortillas recién hechas.</li>
-      <li><strong>Tacos de Adobada:</strong> Sazonados con nuestra receta especial, con piña o sin piña.</li>
-      <li><strong>Bebidas:</strong> Refrescos, aguas frescas y más.</li>
+    <h3>Refrescos</h3>
+    <ul class="menu-list">
+      <li>Refresco 355 ml <span>$18</span></li>
+      <li>Refresco 500 ml <span>$25</span></li>
     </ul>
   </section>
 
-  <section id="galeria">
-    <h2>Galería</h2>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/400x300?text=Barbacoa" alt="Taco de Barbacoa">
-      <img src="https://via.placeholder.com/400x300?text=Bistec" alt="Taco de Bistec">
-      <img src="https://via.placeholder.com/400x300?text=Adobada" alt="Taco de Adobada">
-      <img src="https://via.placeholder.com/400x300?text=Salsas+y+acompañamientos" alt="Salsas y acompañamientos">
+  <section id="opiniones">
+    <h2>Opiniones de Nuestros Clientes</h2>
+    <div class="testimonial">
+      "Los mejores tacos de barbacoa que he probado en Guadalajara. Siempre frescos y buen servicio."
+      <strong>- María G.</strong>
+    </div>
+    <div class="testimonial">
+      "El sabor es auténtico y el precio justo. ¡Recomendados para toda la familia!"
+      <strong>- Juan P.</strong>
+    </div>
+    <div class="testimonial">
+      "Me encanta la variedad y las aguas frescas están deliciosas."
+      <strong>- Ana R.</strong>
     </div>
   </section>
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <p>Teléfono: <a href="tel:3311450168">331 145 0168</a></p>
-    <form onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te contactaremos pronto.');">
-      <input type="text" placeholder="Tu nombre" required>
-      <input type="email" placeholder="Tu correo electrónico" required>
-      <textarea placeholder="Mensaje o pedido" rows="5" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
+    <p class="contact-info">Teléfono: <a href="tel:+523311450168">33 1145 0168</a></p>
+    <p class="contact-info">Dirección: Calle Falsa 123, Guadalajara, Jalisco</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Tacos Los AZ. Todos los derechos reservados.</p>
-    <p>Síguenos en redes:
-      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg" target="_blank" rel="noopener noreferrer" title="Instagram Tacos Los AZ">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width:24px; height:24px; vertical-align:middle;">
-      </a>
-    </p>
-  </footer>
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/523311450168?text=Hola%20quiero%20hacer%20un%20pedido" id="whatsapp-float" target="_blank" aria-label="Chat WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
 </body>
 </html>
