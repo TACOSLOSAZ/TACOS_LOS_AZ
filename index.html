@@ -7,10 +7,6 @@
   <meta name="description" content="Disfruta los mejores tacos de barbacoa, bistec y adobada en Tacos Los AZ. Aguas frescas, refrescos y servicio de calidad." />
   <meta name="keywords" content="tacos, barbacoa, bistec, adobada, aguas frescas, tacos los az, comida mexicana" />
   <meta name="author" content="Tacos Los AZ" />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    rel="stylesheet"
-  />
   <style>
     /* Reset y básicos */
     * {
@@ -20,7 +16,14 @@
       font-family: Arial, sans-serif;
     }
     body {
-      background: #fff8f0;
+      background-color: #F5F1E9; /* beige claro */
+      background-image: repeating-linear-gradient(
+        45deg,
+        #F5F1E9,
+        #F5F1E9 10px,
+        #E6DFC9 11px,
+        #F5F1E9 12px
+      );
       color: #3a1f0b;
       line-height: 1.6;
       padding-bottom: 120px; /* para botones flotantes */
@@ -30,14 +33,15 @@
       position: relative;
     }
     a {
-      color: #b33a00;
+      color: #6B4C2B; /* marrón oscuro */
       text-decoration: none;
     }
     a:hover {
+      color: #C97433; /* naranja quemado */
       text-decoration: underline;
     }
     header {
-      background: #b33a00;
+      background: #6B4C2B; /* marrón oscuro */
       color: white;
       padding: 20px 10px;
       text-align: center;
@@ -50,11 +54,12 @@
       font-size: 2.5rem;
       letter-spacing: 2px;
       margin-bottom: 5px;
+      color: #FFF8E7; /* beige muy claro */
     }
     header p.subtitulo {
       font-style: italic;
       font-weight: 600;
-      color: #fff1e6;
+      color: #D7C9AA; /* beige medio */
       font-size: 1.2rem;
       margin-top: 0;
     }
@@ -65,9 +70,10 @@
       margin: 0 15px;
       font-weight: bold;
       font-size: 1.1rem;
-      color: white;
+      color: #F5E6B2; /* beige claro */
     }
     nav a:hover {
+      color: #C97433; /* naranja quemado */
       text-decoration: underline;
     }
     section {
@@ -90,7 +96,7 @@
     }
     h2 {
       margin-bottom: 15px;
-      border-bottom: 2px solid #b33a00;
+      border-bottom: 2px solid #6B4C2B; /* marrón oscuro */
       padding-bottom: 5px;
     }
     /* Menú */
@@ -99,20 +105,21 @@
       padding-left: 0;
     }
     ul.menu-list li {
-      background: #f3e6d9;
+      background: #EDE6D9; /* beige muy claro */
       margin: 10px 0;
       padding: 12px 20px;
       border-radius: 8px;
       cursor: pointer;
-      box-shadow: 1px 1px 3px rgba(179,58,0,0.3);
+      box-shadow: 1px 1px 3px rgba(107, 76, 43, 0.3);
       display: flex;
       justify-content: space-between;
       font-weight: 600;
       transition: background-color 0.3s ease;
       user-select: none;
+      color: #5D3A1A; /* marrón oscuro */
     }
     ul.menu-list li:hover {
-      background: #b33a00;
+      background: #C97433; /* naranja quemado */
       color: white;
     }
     /* Modal styles */
@@ -152,23 +159,24 @@
       top: 10px;
       font-size: 22px;
       font-weight: bold;
-      color: #b33a00;
+      color: #6B4C2B;
       cursor: pointer;
       user-select: none;
     }
     /* Opiniones */
     .testimonial {
       background: #f7f2ec;
-      border-left: 5px solid #b33a00;
+      border-left: 5px solid #6B4C2B;
       padding: 15px 20px;
       margin-bottom: 15px;
       border-radius: 5px;
       font-style: italic;
-      box-shadow: 1px 1px 5px rgba(179,58,0,0.15);
+      box-shadow: 1px 1px 5px rgba(107,76,43,0.15);
+      color: #5D3A1A;
     }
     .testimonial strong {
       font-style: normal;
-      color: #b33a00;
+      color: #6B4C2B;
       display: block;
       margin-top: 8px;
       text-align: right;
@@ -177,12 +185,13 @@
     /* Contacto */
     .contact-info {
       font-size: 1.1rem;
+      color: #5D3A1A;
     }
     .horarios {
       margin-top: 10px;
       font-style: italic;
       font-weight: 600;
-      color: #b33a00;
+      color: #6B4C2B;
     }
     .social-icons {
       margin-top: 15px;
@@ -190,18 +199,18 @@
     .social-icons a {
       margin-right: 15px;
       font-size: 1.5rem;
-      color: #b33a00;
+      color: #6B4C2B;
       transition: color 0.3s ease;
     }
     .social-icons a:hover {
-      color: #7a1d00;
+      color: #C97433;
     }
     /* Botón flotante WhatsApp */
     #whatsapp-float {
       position: fixed;
       bottom: 25px;
       right: 25px;
-      background-color: #25d366;
+      background-color: #25d366; /* verde WhatsApp */
       color: white;
       width: 60px;
       height: 60px;
@@ -222,9 +231,9 @@
     /* Botón flotante Instagram */
     #instagram-float {
       position: fixed;
-      bottom: 95px; /* 60 + 10 + 25 para que no se superponga */
+      bottom: 95px; /* 60 + 10 + 25 */
       right: 25px;
-      background: #e1306c;
+      background: #6B4C2B; /* marrón oscuro */
       color: white;
       width: 50px;
       height: 50px;
@@ -239,14 +248,14 @@
       transition: background-color 0.3s ease;
     }
     #instagram-float:hover {
-      background-color: #b02755;
+      background-color: #C97433;
     }
     /* Botón flotante Cotiza tu evento arriba derecha */
     #cotiza-evento-float {
       position: fixed;
       top: 25px;
       right: 25px;
-      background-color: #f8c200;
+      background-color: #AA7A35; /* marrón dorado */
       color: #3a1f0b;
       font-weight: 700;
       border-radius: 30px;
@@ -262,7 +271,7 @@
       user-select: none;
     }
     #cotiza-evento-float:hover {
-      background-color: #d1a800;
+      background-color: #8B6328;
     }
     /* Icono calendario */
     #cotiza-evento-float i {
@@ -285,7 +294,7 @@
       width: 100%;
       padding: 8px;
       margin-top: 5px;
-      border: 1.5px solid #b33a00;
+      border: 1.5px solid #6B4C2B;
       border-radius: 6px;
       font-size: 1rem;
       resize: vertical;
@@ -296,7 +305,7 @@
     }
     form button.submit-btn {
       margin-top: 20px;
-      background-color: #b33a00;
+      background-color: #6B4C2B;
       color: white;
       border: none;
       padding: 12px 20px;
@@ -308,7 +317,7 @@
       width: 100%;
     }
     form button.submit-btn:hover {
-      background-color: #7a1d00;
+      background-color: #513A1A;
     }
     /* Animaciones */
     @keyframes fadeInUp {
@@ -348,6 +357,7 @@
       }
     }
   </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -431,7 +441,7 @@
     <h2>Contacto</h2>
     <p class="contact-info">Teléfono: <a href="tel:+523311450168">33 1145 0168</a></p>
     <p class="contact-info">
-      Dirección: 
+      Dirección:
       <a href="https://www.google.com/maps/search/?api=1&query=Morelos+48,+Jardines+de+San+Francisco,+44799+Guadalajara,+Jal." target="_blank" rel="noopener noreferrer">
         Morelos 48, Jardines de San Francisco, 44799 Guadalajara, Jal.
       </a>
@@ -460,111 +470,61 @@
     </div>
   </div>
 
-  <!-- Modal cotiza evento -->
-  <div class="modal" id="cotizaModal">
-    <div class="modal-content">
-      <span class="close-btn" id="cotizaClose">&times;</span>
-      <h3>Cotiza tu evento</h3>
-      <form id="cotizaForm">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" />
-        
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" required placeholder="Tu número de teléfono" pattern="[0-9\s\-\+\(\)]{7,}" />
-        
-        <label for="descripcion">Descripción del evento:</label>
-        <textarea id="descripcion" name="descripcion" required placeholder="Detalles del evento"></textarea>
-
-        <label for="numeroPersonas">Número de personas:</label>
-        <input type="number" id="numeroPersonas" name="numeroPersonas" min="1" required placeholder="Cantidad aproximada" />
-        
-        <button type="submit" class="submit-btn">Enviar cotización</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Botón flotante WhatsApp -->
-  <a id="whatsapp-float" href="https://wa.me/523311450168" target="_blank" aria-label="WhatsApp Tacos Los AZ" title="WhatsApp Tacos Los AZ">
+  <!-- Botones flotantes -->
+  <a href="https://wa.me/523311450168" target="_blank" id="whatsapp-float" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
-
-  <!-- Botón flotante Instagram -->
-  <a id="instagram-float" href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram Tacos Los AZ" title="Instagram Tacos Los AZ">
+  <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" id="instagram-float" aria-label="Instagram">
     <i class="fab fa-instagram"></i>
   </a>
-
-  <!-- Botón flotante Cotiza tu evento -->
-  <button id="cotiza-evento-float" aria-label="Cotiza tu evento" title="Cotiza tu evento">
-    <i class="fa-regular fa-calendar"></i> Cotiza tu evento
-  </button>
+  <a href="#contacto" id="cotiza-evento-float" aria-label="Cotiza tu evento">
+    <i class="fas fa-calendar-alt"></i> Cotiza tu evento
+  </a>
 
   <script>
-    // Variables globales
-    const menuItems = document.querySelectorAll('ul.menu-list li');
-    const modal = document.getElementById('menuModal');
-    const modalName = document.getElementById('modalName');
-    const modalImg = document.getElementById('modalImg');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalWeight = document.getElementById('modalWeight');
-    const weightPara = document.getElementById('weightPara');
-    const modalCloseBtn = document.getElementById('modalClose');
+    // Modal funcionamiento
+    const menuItems = document.querySelectorAll("ul.menu-list li");
+    const modal = document.getElementById("menuModal");
+    const modalClose = document.getElementById("modalClose");
+    const modalName = document.getElementById("modalName");
+    const modalImg = document.getElementById("modalImg");
+    const modalPrice = document.getElementById("modalPrice");
+    const modalWeight = document.getElementById("modalWeight");
+    const weightPara = document.getElementById("weightPara");
 
     menuItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const name = item.getAttribute('data-name');
-        const price = item.getAttribute('data-price');
-        const weight = item.getAttribute('data-weight');
-        const img = item.getAttribute('data-img');
+      item.addEventListener("click", () => {
+        const name = item.getAttribute("data-name");
+        const price = item.getAttribute("data-price");
+        const weight = item.getAttribute("data-weight");
+        const img = item.getAttribute("data-img");
 
         modalName.textContent = name;
         modalPrice.textContent = price;
-        if(weight){
+        if(weight) {
           modalWeight.textContent = weight;
-          weightPara.style.display = 'block';
+          weightPara.style.display = "block";
         } else {
-          weightPara.style.display = 'none';
+          weightPara.style.display = "none";
         }
         modalImg.src = img;
-        modalImg.alt = `Imagen de ${name}`;
-
-        modal.style.display = 'flex';
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Evita scroll al modal abierto
       });
     });
 
-    modalCloseBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
+    modalClose.addEventListener("click", () => {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
     });
 
-    window.addEventListener('click', (e) => {
-      if(e.target === modal){
-        modal.style.display = 'none';
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
       }
-      if(e.target === cotizaModal){
-        cotizaModal.style.display = 'none';
-      }
-    });
-
-    // Cotiza tu evento modal
-    const cotizaBtn = document.getElementById('cotiza-evento-float');
-    const cotizaModal = document.getElementById('cotizaModal');
-    const cotizaCloseBtn = document.getElementById('cotizaClose');
-    const cotizaForm = document.getElementById('cotizaForm');
-
-    cotizaBtn.addEventListener('click', () => {
-      cotizaModal.style.display = 'flex';
-    });
-
-    cotizaCloseBtn.addEventListener('click', () => {
-      cotizaModal.style.display = 'none';
-    });
-
-    cotizaForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Gracias por enviar tu solicitud de cotización. Nos pondremos en contacto contigo pronto.');
-      cotizaForm.reset();
-      cotizaModal.style.display = 'none';
     });
   </script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </body>
 </html>
