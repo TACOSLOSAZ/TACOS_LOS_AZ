@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tacos Los AZ | Menú</title>
+  <meta name="description" content="Tacos de barbacoa, bistec y adobada directos del corazón de Guadalajara" />
+  <meta name="keywords" content="tacos, barbacoa, bistec, adobada, comida mexicana, Guadalajara" />
+  <meta name="author" content="Tacos Los AZ" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
@@ -15,11 +18,11 @@
     header {
       text-align: center;
       padding: 2rem;
-      background: #7b5e57;
+      background: #a63f2a; /* rojo cobrizo */
       color: #fff;
     }
     h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       border-radius: 12px;
     }
     section {
@@ -27,6 +30,7 @@
     }
     h2, h3 {
       color: #3a2e2a;
+      cursor: pointer;
     }
     .menu-list {
       list-style: none;
@@ -60,13 +64,19 @@
       margin: 5px;
       font-size: 20px;
     }
+    .floating-btn a.instagram {
+      background: #e1306c;
+    }
+    .floating-btn a.cotiza {
+      background: #f4a261;
+    }
     footer {
-      background: #7b5e57;
+      background: #a63f2a;
       color: #fff;
       text-align: center;
       padding: 1rem;
     }
-    .modal {
+    .modal, .info-modal {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -75,7 +85,7 @@
       align-items: center;
       justify-content: center;
     }
-    .modal-content {
+    .modal-content, .info-content {
       background: white;
       padding: 2rem;
       border-radius: 10px;
@@ -101,29 +111,30 @@
 </head>
 <body>
   <header>
-    <h1>Tacos Los AZ</h1>
-    <p>"Los tacos que te hacen volver"</p>
+    <h1>TACOS LOS AZ</h1>
+    <p>Tacos de barbacoa, bistec y adobada directos del corazón de Guadalajara.</p>
+    <div id="google_translate_element"></div>
   </header>
 
   <section id="menu">
-    <h2>Menú y Precios</h2>
-    <p class="horarios">Horario: Lunes a Domingo 9:00 AM - 8:00 PM</p>
+    <h2 onclick="abrirInfo('TACOS')">Menú y Precios</h2>
+    <p class="horarios">Horario: Sábados y Domingos de 8:00 AM a 2:00 PM</p>
 
-    <h3>Tacos</h3>
+    <h3 onclick="abrirInfo('TACOS')">Tacos</h3>
     <ul class="menu-list">
       <li>Tacos de Barbacoa <span>$19</span></li>
       <li>Tacos de Bistec <span>$24</span></li>
       <li>Tacos de Adobada <span>$22</span></li>
     </ul>
 
-    <h3>Lonches</h3>
+    <h3 onclick="abrirInfo('LONCHES')">Lonches</h3>
     <ul class="menu-list">
       <li>Lonche de Bistec <span>$80</span></li>
       <li>Lonche de Barbacoa <span>$70</span></li>
       <li>Lonche de Adobada <span>$70</span></li>
     </ul>
 
-    <h3>Bebidas</h3>
+    <h3 onclick="abrirInfo('BEBIDAS')">Bebidas</h3>
     <ul class="menu-list">
       <li>Agua fresca chica (0.5L) <span>$25</span></li>
       <li>Agua fresca grande (1L) <span>$30</span></li>
@@ -135,7 +146,6 @@
   <section id="opiniones">
     <h2>Opiniones de los clientes</h2>
     <p>¡Déjanos tu opinión en redes sociales o contáctanos!</p>
-    <!-- Se puede implementar una caja de comentarios externa o embed en futuro -->
   </section>
 
   <footer>
@@ -145,15 +155,15 @@
 
   <div class="floating-btn">
     <a href="https://wa.me/3311450168" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/tacos_los_azmx" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="#" id="cotiza-evento-float" title="Cotiza tu evento" style="background:#f4a261;"><i class="fa fa-calendar-alt"></i></a>
+    <a href="https://www.instagram.com/tacos_los_azmx" class="instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" id="cotiza-evento-float" class="cotiza" title="Realiza tu cotización para eventos aquí"><i class="fa fa-calendar-alt"></i></a>
   </div>
 
   <!-- Modal Cotiza Evento -->
   <div id="cotiza-modal" class="modal" aria-hidden="true" role="dialog">
     <div class="modal-content">
       <span class="close-btn" onclick="cerrarCotiza()" aria-label="Cerrar">&times;</span>
-      <h3>Cotiza tu Evento</h3>
+      <h3>Realiza tu Cotización para Eventos</h3>
       <form id="form-cotiza">
         <label>Nombre:</label>
         <input type="text" name="nombre" required placeholder="Tu nombre">
@@ -168,6 +178,22 @@
       </form>
     </div>
   </div>
+
+  <!-- Info Modal -->
+  <div id="info-modal" class="info-modal" aria-hidden="true">
+    <div class="info-content">
+      <span class="close-btn" onclick="cerrarInfo()" aria-label="Cerrar">&times;</span>
+      <p id="info-text"></p>
+    </div>
+  </div>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'es', includedLanguages: 'es,en'}, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
     const cotizaBtn = document.getElementById('cotiza-evento-float');
@@ -190,6 +216,24 @@
       formCotiza.reset();
       cerrarCotiza();
     });
+
+    function abrirInfo(tipo) {
+      const infoModal = document.getElementById('info-modal');
+      const texto = {
+        'TACOS': 'Taco de barbacoa exquisito, preparado con receta tradicional jalisciense.',
+        'LONCHES': 'Lonches rellenos de carne jugosa con sazón casero y pan suavecito.',
+        'BEBIDAS': 'Aguas frescas naturales y refrescos fríos para acompañar tus tacos.'
+      };
+      document.getElementById('info-text').textContent = texto[tipo];
+      infoModal.style.display = 'flex';
+      infoModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function cerrarInfo() {
+      const infoModal = document.getElementById('info-modal');
+      infoModal.style.display = 'none';
+      infoModal.setAttribute('aria-hidden', 'true');
+    }
   </script>
 </body>
 </html>
