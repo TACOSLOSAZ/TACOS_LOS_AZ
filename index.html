@@ -55,6 +55,9 @@
       bottom: 20px;
       right: 20px;
       z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
     .floating-btn a {
       display: inline-block;
@@ -63,13 +66,18 @@
       padding: 15px;
       border-radius: 50%;
       text-decoration: none;
-      margin: 5px;
       font-size: 20px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s;
     }
     .floating-btn a.instagram {
       background: #e1306c;
     }
-    /* Quitar .cotiza de aquí porque la pusimos arriba */
+    .floating-btn a:hover {
+      background: #128c7e;
+    }
+    /* Botón cotiza en esquina superior derecha */
     .cotiza-top-right {
       position: fixed;
       top: 20px;
@@ -86,12 +94,19 @@
       align-items: center;
       gap: 8px;
       text-decoration: none;
+      transition: background 0.3s;
     }
     .cotiza-top-right i {
       font-size: 18px;
     }
     .cotiza-top-right:hover {
       background: #e18f4f;
+    }
+    /* Ocultar botón en móviles */
+    @media (max-width: 768px) {
+      .cotiza-top-right {
+        display: none;
+      }
     }
     footer {
       background: #a63f2a;
@@ -140,7 +155,7 @@
   </header>
 
   <!-- Botón cotiza en esquina superior derecha -->
-  <a href="#" id="cotiza-top" class="cotiza-top-right" title="Realiza tu cotización para eventos aquí" aria-label="Realiza tu cotización para eventos aquí">
+  <a href="https://wa.me/5213311450168?text=Hola!%20Quisiera%20realizar%20una%20cotizaci%C3%B3n%20para%20evento" target="_blank" class="cotiza-top-right" title="Realiza tu cotización para eventos aquí" aria-label="Realiza tu cotización para eventos aquí">
     <i class="fa fa-calendar-alt"></i> Realiza tu cotización para eventos aquí
   </a>
 
@@ -178,32 +193,12 @@
 
   <footer>
     <p>© 2025 Tacos Los AZ</p>
-    <p>Contacto por redes sociales</p>
+    <p>Contacto: Oscar Lomelí, Luis Araiza y Enrique Sánchez</p>
   </footer>
 
   <div class="floating-btn">
-    <a href="https://wa.me/3311450168" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/tacos_los_azmx" class="instagram" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-  </div>
-
-  <!-- Modal Cotiza Evento -->
-  <div id="cotiza-modal" class="modal" aria-hidden="true" role="dialog">
-    <div class="modal-content">
-      <span class="close-btn" onclick="cerrarCotiza()" aria-label="Cerrar">&times;</span>
-      <h3>Realiza tu Cotización para Eventos</h3>
-      <form id="form-cotiza">
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required placeholder="Tu nombre">
-        <label>Teléfono:</label>
-        <input type="tel" name="telefono" required placeholder="Tu número de contacto">
-        <label>¿Para cuántas personas?</label>
-        <input type="number" name="personas" min="1" required>
-        <label>¿Qué esperas del servicio?</label>
-        <textarea name="expectativa" required></textarea>
-        <p>Ubicación: <a href="https://www.google.com/maps?q=20.659698,-103.349609" target="_blank">Ver ubicación en Google Maps</a></p>
-        <button type="submit">Enviar solicitud</button>
-      </form>
-    </div>
+    <a href="https://wa.me/5213311450168" target="_blank" aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/tacos_los_azmx" class="instagram" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
   </div>
 
   <!-- Info Modal -->
@@ -223,38 +218,15 @@
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
-    const cotizaModal = document.getElementById('cotiza-modal');
-
-    // Botón flotante inferior ya no tiene cotiza
-    const cotizaTop = document.getElementById('cotiza-top');
-    cotizaTop.addEventListener('click', e => {
-      e.preventDefault();
-      cotizaModal.style.display = 'flex';
-      cotizaModal.setAttribute('aria-hidden', 'false');
-    });
-
-    function cerrarCotiza() {
-      cotizaModal.style.display = 'none';
-      cotizaModal.setAttribute('aria-hidden', 'true');
-    }
-
-    const formCotiza = document.getElementById('form-cotiza');
-    formCotiza.addEventListener('submit', e => {
-      e.preventDefault();
-      alert("¡Gracias por tu interés! Te contactaremos pronto.");
-      formCotiza.reset();
-      cerrarCotiza();
-    });
-
     function abrirInfo(tipo) {
       const infoModal = document.getElementById('info-modal');
       const texto = {
-        TACOS_BARBACOA: 'Taco de barbacoa exquisito, preparado con receta tradicional jalisciense.',
-        TACOS_BISTEC: 'Taco de bistec jugoso con cebollita y salsa al gusto.',
-        TACOS_ADOBADA: 'Taco de adobada con piña y especias mexicanas.',
-        LONCHE_BISTEC: 'Lonche de bistec con pan suave y carne bien sazonada.',
-        LONCHE_BARBACOA: 'Lonche de barbacoa que se deshace en tu boca.',
-        LONCHE_ADOBADA: 'Lonche de adobada con el toque perfecto de picante.',
+        TACOS_BARBACOA: 'Taco de barbacoa exquisito, preparado con receta tradicional jalisciense. Peso total aproximado: 100–140 gramos por taco de barbacoa y 180–250 kcal.',
+        TACOS_BISTEC: 'Taco de bistec jugoso con cebollita y salsa al gusto. Peso total aproximado: 110–150 gramos por taco de bistec y 200–270 kcal.',
+        TACOS_ADOBADA: 'Taco de adobada con piña y especias mexicanas. Peso total aproximado: 100–140 gramos por taco de adobada y 190–260 kcal.',
+        LONCHE_BARBACOA: 'Lonche de barbacoa que se deshace en tu boca. Total aproximado: 220–270 gramos por lonche de barbacoa y 520–650 kcal.',
+        LONCHE_BISTEC: 'Lonche de bistec con pan suave y carne bien sazonada. Total aproximado: 240–290 gramos por lonche de bistec y 540–630 kcal.',
+        LONCHE_ADOBADA: 'Lonche de adobada con el toque perfecto de picante. Total aproximado: 220–270 gramos por lonche de adobada y 520–650 kcal.',
         AGUA_CHICA: 'Agua fresca de sabores naturales en presentación de medio litro.',
         AGUA_GRANDE: 'Agua fresca de sabores naturales grande ideal para compartir.',
         REF_355: 'Refresco frío de 355 ml para acompañar tu comida.',
