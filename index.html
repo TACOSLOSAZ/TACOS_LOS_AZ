@@ -84,9 +84,6 @@
     section:nth-of-type(4) {
       animation-delay: 0.7s;
     }
-    section:nth-of-type(5) {
-      animation-delay: 0.9s;
-    }
     h2 {
       margin-bottom: 15px;
       border-bottom: 2px solid #b33a00;
@@ -176,13 +173,6 @@
     /* Contacto */
     .contact-info {
       font-size: 1.1rem;
-      margin-bottom: 6px;
-    }
-    .contact-names {
-      margin-top: 15px;
-      font-weight: 600;
-      color: #3a1f0b;
-      font-style: italic;
     }
     .horarios {
       margin-top: 10px;
@@ -364,16 +354,14 @@
     <nav>
       <a href="#menu">Menú</a>
       <a href="#opiniones">Opiniones</a>
-      <a href="#comentarios">Comentarios</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
   <section id="menu">
-    <p class="horarios">Nos ponemos todos los sábados y domingos de 8 am a 2 pm</p>
     <h2>Menú y Precios</h2>
 
-    <h3>Tacos</h3>
+    <h3>TACOS</h3>
     <ul class="menu-list">
       <li data-name="Barbacoa" data-price="19" data-weight="50" data-img="https://i.imgur.com/kwXUmvh.jpg">
         Taco de Barbacoa <span>$19</span>
@@ -388,8 +376,8 @@
 
     <h3>Lonches</h3>
     <ul class="menu-list">
-      <li data-name="Lonche de Bistec" data-price="80" data-weight="150" data-img="https://i.imgur.com/9y2QVtF.jpg">
-        Lonche de Bistec <span>$80</span>
+      <li data-name="Lonche de Bistec" data-price="60" data-weight="150" data-img="https://i.imgur.com/9y2QVtF.jpg">
+        Lonche de Bistec <span>$60</span>
       </li>
       <li data-name="Lonche de Barbacoa" data-price="70" data-weight="150" data-img="https://i.imgur.com/Ar3b0qW.jpg">
         Lonche de Barbacoa <span>$70</span>
@@ -436,20 +424,6 @@
     </div>
   </section>
 
-  <section id="comentarios">
-    <h2>Comentarios de Visitantes</h2>
-    <form id="comentariosForm">
-      <label for="nombreComentario">Nombre:</label>
-      <input type="text" id="nombreComentario" name="nombreComentario" required placeholder="Tu nombre" />
-      
-      <label for="comentario">Comentario:</label>
-      <textarea id="comentario" name="comentario" required placeholder="Escribe tu comentario aquí"></textarea>
-      
-      <button type="submit" class="submit-btn">Enviar Comentario</button>
-    </form>
-    <div id="comentariosList" style="margin-top:20px;"></div>
-  </section>
-
   <section id="contacto">
     <h2>Contacto</h2>
     <p class="contact-info">Teléfono: <a href="tel:+523311450168">33 1145 0168</a></p>
@@ -459,12 +433,151 @@
         Morelos 48, Jardines de San Francisco, 44799 Guadalajara, Jal.
       </a>
     </p>
-    <p class="contact-names">
-      Oscar Lomelí, Luis Araiza y Enrique Sánchez
+    <p class="horarios">
+      Nos ponemos todos los sábados y domingos de 8 am a 2 pm
     </p>
     <div class="social-icons">
-      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook" title="Facebook">
-        <i class="fab fa-facebook-square
+      <a href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/tacos_los_azmx" target="_blank" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+    </div>
+  </section>
+
+  <!-- Modal menú -->
+  <div class="modal" id="menuModal">
+    <div class="modal-content">
+      <span class="close-btn" id="modalClose">&times;</span>
+      <h3 id="modalName"></h3>
+      <img id="modalImg" src="" alt="Imagen" />
+      <p><strong>Precio:</strong> $<span id="modalPrice"></span></p>
+      <p id="weightPara"><strong>Peso estimado:</strong> <span id="modalWeight"></span> gramos</p>
+    </div>
+  </div>
+
+  <!-- Modal cotiza evento -->
+  <div class="modal" id="cotizaModal">
+    <div class="modal-content">
+      <span class="close-btn" id="cotizaClose">&times;</span>
+      <h3>Cotiza tu evento</h3>
+      <form id="cotizaForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" />
+        
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required placeholder="Tu número de teléfono" pattern="[0-9\s\-\+\(\)]{7,}" />
+        
+        <label for="descripcion">Descripción del evento:</label>
+        <textarea id="descripcion" name="descripcion" required placeholder="Cuéntanos qué deseas para tu evento"></textarea>
+        
+        <label for="personas">Número de personas:</label>
+        <input type="number" id="personas" name="personas" required min="1" placeholder="¿Para cuántas personas?" />
+        
+        <button type="submit" class="submit-btn">Enviar por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Botón flotante WhatsApp -->
+  <a id="whatsapp-float" href="https://wa.me/523311450168" target="_blank" aria-label="WhatsApp Tacos Los AZ" title="WhatsApp Tacos Los AZ">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Botón flotante Instagram -->
+  <a id="instagram-float" href="https://www.instagram.com/tacos_los_azmx?igsh=MWs4M2J0c2JqaGh2cg%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram Tacos Los AZ" title="Instagram Tacos Los AZ">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- Botón flotante Cotiza tu evento -->
+  <button id="cotiza-evento-float" aria-label="Cotiza tu evento">
+    <i class="fas fa-calendar-alt"></i> Cotiza tu evento
+  </button>
+
+  <script>
+    // Mostrar modal menú con info al hacer click en un producto
+    const menuItems = document.querySelectorAll('.menu-list li');
+    const modal = document.getElementById('menuModal');
+    const modalName = document.getElementById('modalName');
+    const modalImg = document.getElementById('modalImg');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalWeight = document.getElementById('modalWeight');
+    const weightPara = document.getElementById('weightPara');
+    const modalClose = document.getElementById('modalClose');
+
+    menuItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const name = item.getAttribute('data-name');
+        const price = item.getAttribute('data-price');
+        const weight = item.getAttribute('data-weight');
+        const img = item.getAttribute('data-img');
+
+        modalName.textContent = name;
+        modalPrice.textContent = price;
+        modalImg.src = img;
+        modalImg.alt = name;
+        if(weight) {
+          modalWeight.textContent = weight;
+          weightPara.style.display = 'block';
+        } else {
+          weightPara.style.display = 'none';
+        }
+        modal.style.display = 'flex';
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if(e.target === modal) {
+        modal.style.display = 'none';
+      }
+      if(e.target === cotizaModal) {
+        cotizaModal.style.display = 'none';
+      }
+    });
+
+    // Modal cotiza evento
+    const cotizaBtn = document.getElementById('cotiza-evento-float');
+    const cotizaModal = document.getElementById('cotizaModal');
+    const cotizaClose = document.getElementById('cotizaClose');
+    const cotizaForm = document.getElementById('cotizaForm');
+
+    cotizaBtn.addEventListener('click', () => {
+      cotizaModal.style.display = 'flex';
+    });
+
+    cotizaClose.addEventListener('click', () => {
+      cotizaModal.style.display = 'none';
+    });
+
+    cotizaForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
+      const descripcion = document.getElementById('descripcion').value.trim();
+      const personas = document.getElementById('personas').value.trim();
+
+      if(!nombre || !telefono || !descripcion || !personas) {
+        alert('Por favor completa todos los campos.');
+        return;
+      }
+
+      // Formato mensaje WhatsApp
+      const mensaje = `Hola, quiero cotizar un evento:%0A` +
+                      `Nombre: ${nombre}%0A` +
+                      `Teléfono: ${telefono}%0A` +
+                      `Descripción: ${descripcion}%0A` +
+                      `Número de personas: ${personas}`;
+
+      // Abrir WhatsApp con mensaje prellenado
+      const url = `https://wa.me/523311450168?text=${mensaje}`;
+      window.open(url, '_blank');
+
+      // Cerrar modal y limpiar formulario
+      cotizaModal.style.display = 'none';
+      cotizaForm.reset();
+    });
+  </script>
+
+</body>
+</html>
